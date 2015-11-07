@@ -1,0 +1,15 @@
+!!! 5
+%html{ lang: page_lang }
+  %head= render 'layouts/head'
+
+  %body{ data: { controller: controller.controller_path, action: controller.action_name } }
+
+    #header= render 'layouts/topbar'
+
+    #main-content{ class: 'container-fluid' }
+      .row-fluid
+        = render_page_content(class: EasyAPP::Theme.main_content_class)
+
+    #modal-holder
+
+    #footer.footer= render 'layouts/footer'

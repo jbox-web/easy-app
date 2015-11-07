@@ -1,0 +1,15 @@
+= responsive_nav_menu(id: 'left-menu-top-sm', navbar_name: sidebar_menu_top_title, navbar_id: 'left-menu-top-navbar-sm') do
+  = render_sidebar_menu_top(prefix: :sm)
+
+= responsive_nav_menu(id: 'left-menu-bottom-sm', navbar_name: sidebar_menu_bottom_title, navbar_id: 'left-menu-bottom-navbar-sm') do
+  = render_sidebar_menu_bottom(prefix: :sm)
+
+= static_sidebar(class: EasyAPP::Theme.sidebar_class) do
+
+  = sidebar_module(id: 'left-menu-top') do
+    = nav_menu(style: 'width: 100%;') do
+      = render_sidebar_menu_top
+
+  = sidebar_module(id: 'left-menu-bottom') do
+    = nav_menu(style: 'width: 100%;') do
+      = render_sidebar_menu_bottom
