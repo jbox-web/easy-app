@@ -1,5 +1,5 @@
 module EasyAPP
-  module NavigationHelper
+  module MenusHelper
 
     # Here we create zones for menus :
     # We have 3 zones :
