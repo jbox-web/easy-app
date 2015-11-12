@@ -5,7 +5,15 @@ require 'bundler'
 EXCLUDED_GEMS = %w(rails puma)
 
 Gem.loaded_specs['easy-app'].dependencies.each do |d|
- require d.name unless EXCLUDED_GEMS.include?(d.name)
+  begin
+    require d.name unless EXCLUDED_GEMS.include?(d.name)
+  rescue Exception => e
+    begin
+      require d.name.gsub('-', '/')
+    rescue Exception => e
+      puts d.name
+    end
+  end
 end
 
 # Load Engine
@@ -21,6 +29,9 @@ module EasyAPP
   require 'easy_app/themes/bootstrap'
   require 'easy_app/themes/font_awesome'
   require 'easy_app/theme'
+
+  require 'easy_app/redcarpet_filter'
+  require 'easy_app/markdown_renderer'
 
   require 'easy_app/core_ext/bootstrap_form/instance_tag'
   require 'easy_app/core_ext/bootstrap_form/form_builder_patch'
