@@ -13,6 +13,7 @@
  *= require rails_bootstrap_forms
  *= require font-awesome
  *= require bootstrap3-switch
+ *= require bootstrap-tagsinput
  *= require_tree .
  */
 

@@ -18,4 +18,5 @@
 #= require jquery-ui/sortable
 #= require bootstrap-sprockets
 #= require bootstrap-switch
+#= require bootstrap-tagsinput
 #= require_tree .

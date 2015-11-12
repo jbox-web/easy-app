@@ -54,6 +54,9 @@ Gem::Specification.new do |s|
   # Forms switches for checkboxes
   s.add_dependency 'bootstrap-switch-rails'
 
+  # Tags input
+  s.add_dependency 'bootstrap-tagsinput-rails'
+
   # Menus
   s.add_dependency 'simple-navigation'
   s.add_dependency 'simple_navigation_renderers'
