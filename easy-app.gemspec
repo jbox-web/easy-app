@@ -82,6 +82,9 @@ Gem::Specification.new do |s|
   # Search
   s.add_dependency 'pg_search'
 
+  # JQueryDataTables
+  s.add_dependency 'ajax-datatables-rails'
+
   # Markdown editor
   s.add_dependency 'rails-bootstrap-markdown'
   s.add_dependency 'html-pipeline'
