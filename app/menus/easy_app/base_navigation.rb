@@ -91,7 +91,7 @@ module EasyAPP
 
 
     def navmenu_options
-      { renderer: :bootstrap3, expand_all: true, remove_navigation_class: false, skip_if_empty: true }
+      { renderer: :bootstrap3, expand_all: true, skip_if_empty: true }
     end
 
 
