@@ -19,4 +19,5 @@
 #= require bootstrap-sprockets
 #= require bootstrap-switch
 #= require bootstrap-tagsinput
+#= require select2
 #= require_tree .
