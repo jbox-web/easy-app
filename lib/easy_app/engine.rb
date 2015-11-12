@@ -14,7 +14,13 @@ module EasyAPP
       ApplicationController.helper(EasyAPP::Engine.helpers)
     end
 
+    config.before_initialize do
+      config.i18n.load_path += Dir[config.root.join('config', 'locales', '**', '*.yml').to_s]
+    end
+
     config.after_initialize do
+      Haml::Template.options[:attr_wrapper] = '"'
+
       Crummy.configure do |config|
         config.format            = :html_list
         config.ul_class          = 'breadcrumb'
@@ -25,6 +31,8 @@ module EasyAPP
         navigation.auto_highlight       = true
         navigation.highlight_on_subpath = true
       end
+
+      Rack::MiniProfiler.config.start_hidden = true
     end
   end
 end

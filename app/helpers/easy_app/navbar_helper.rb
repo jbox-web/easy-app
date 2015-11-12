@@ -123,8 +123,11 @@ module EasyAPP
 
 
       def container_div(brand, brand_link, responsive, fluid, no_turbolink = false, &block)
-        div_container_class = fluid ? 'container-fluid' : 'container'
-        content_tag(:div, class: div_container_class) do
+        if fluid
+          content_tag(:div, class: 'container-fluid') do
+            container_div_with_block(brand, brand_link, responsive, no_turbolink, &block)
+          end
+        else
           container_div_with_block(brand, brand_link, responsive, no_turbolink, &block)
         end
       end

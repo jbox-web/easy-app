@@ -34,6 +34,16 @@ module EasyAPP
     end
 
 
+    def vertical_separator
+      content_tag(:span, '|', class: 'vertical-separator')
+    end
+
+
+    def available_locales
+      I18n.available_locales.map{ |l| [t("language.name.#{l}"), l] }
+    end
+
+
     def merge_hashes(left, right)
       # Merge it with html_options
       left.merge!(right) do |key, oldval, newval|

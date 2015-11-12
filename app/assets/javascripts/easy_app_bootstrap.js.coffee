@@ -28,3 +28,7 @@ root.toggleElement = (event, checked, element) ->
     $(element).show()
   else
     $(element).hide()
+
+
+root.highlight = (element) ->
+  $(element).effect('highlight', { color: '#B0D6D6' }, 1500)

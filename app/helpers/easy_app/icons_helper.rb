@@ -1,5 +1,3 @@
-require 'uri'
-
 module EasyAPP
   module IconsHelper
 
@@ -21,6 +19,16 @@ module EasyAPP
     def stacked_icon(name, opts = {})
       name = name.gsub('fa-', '')
       fa_stacked_icon(name, opts)
+    end
+
+
+    def icon_name_for(content_type)
+      EasyAPP::Theme.icon_name_for(content_type) || 'fa-file'
+    end
+
+
+    def icon_for(content_type)
+      icon(icon_name_for(content_type))
     end
 
 

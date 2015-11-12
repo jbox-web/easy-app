@@ -9,7 +9,7 @@ module EasyAPP
 
 
       def modal_or_application_layout
-        request.xhr? ? 'modal' : 'application'
+        request.xhr? ? 'modal' : User.current.current_theme
       end
 
     end

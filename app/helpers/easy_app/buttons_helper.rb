@@ -10,15 +10,32 @@ module EasyAPP
       ## Set options
       link_opts = { title: t('button.add'), class: css_class }.merge(link_opts)
       icon_opts = { bigger: false }.merge(icon_opts)
+      icon_name = icon_opts.delete(:icon) { 'fa-plus' }
 
       ## Return link
-      link_to_icon('fa-plus', url, link_opts, icon_opts)
+      link_to_icon(icon_name, url, link_opts, icon_opts)
     end
 
 
     def button_modal_add(url, link_opts = {}, icon_opts = {})
       link_opts = link_opts.deep_merge(modal_options)
       button_add(url, link_opts, icon_opts)
+    end
+
+
+    def button_modal(url, link_opts = {}, icon_opts = {})
+      ## Get css options
+      css_class = link_opts.delete(:class){ nil }
+      css_class = button_default_css_class.push(css_class).compact
+
+      ## Set options
+      link_opts = { class: css_class }.merge(link_opts)
+      link_opts = modal_options.deep_merge(link_opts)
+      icon_name = icon_opts.delete(:icon) { 'fa-plus' }
+      icon_opts = { bigger: false }.merge(icon_opts)
+
+      ## Return link
+      link_to_icon(icon_name, url, link_opts, icon_opts)
     end
 
 
@@ -29,9 +46,10 @@ module EasyAPP
 
       ## Set options
       link_opts = { title: t('button.clone'), class: css_class }.merge(link_opts)
+      icon_name = icon_opts.delete(:icon) { 'fa-clone' }
 
       ## Return link
-      link_to_icon('fa-clone', url, link_opts, icon_opts)
+      link_to_icon(icon_name, url, link_opts, icon_opts)
     end
 
 
@@ -42,14 +60,15 @@ module EasyAPP
 
       ## Set options
       link_opts = { title: t('button.edit'), class: css_class }.merge(link_opts)
+      icon_name = icon_opts.delete(:icon) { 'fa-edit' }
 
       ## Return link
-      link_to_icon('fa-edit', url, link_opts, icon_opts)
+      link_to_icon(icon_name, url, link_opts, icon_opts)
     end
 
 
     def button_modal_edit(url, link_opts = {}, icon_opts = {})
-      link_opts = link_opts.deep_merge(modal_options)
+      link_opts = modal_options.deep_merge(link_opts)
       button_edit(url, link_opts, icon_opts)
     end
 
@@ -61,8 +80,9 @@ module EasyAPP
 
       ## Set options
       link_opts = { title: t('button.refresh'), onclick: function, class: css_class }.merge(link_opts)
+      icon_name = icon_opts.delete(:icon) { 'fa-refresh' }
 
-      link_to_icon('fa-refresh', '#', link_opts, icon_opts)
+      link_to_icon(icon_name, '#', link_opts, icon_opts)
     end
 
 
@@ -77,9 +97,10 @@ module EasyAPP
 
       ## Set options
       link_opts = { title: t('button.delete'), class: css_class, method: :delete, data: data }.merge(link_opts)
+      icon_name = icon_opts.delete(:icon) { 'fa-trash-o' }
 
       ## Return link
-      link_to_icon('fa-trash-o', url, link_opts, icon_opts)
+      link_to_icon(icon_name, url, link_opts, icon_opts)
     end
 
 
@@ -90,9 +111,10 @@ module EasyAPP
 
       ## Set options
       link_opts = { title: t('button.cancel'), label: t('button.cancel'), class: css_class }.merge(link_opts)
+      icon_name = icon_opts.delete(:icon) { 'fa-close' }
 
       ## Return link
-      link_to_icon('fa-close', url, link_opts, icon_opts)
+      link_to_icon(icon_name, url, link_opts, icon_opts)
     end
 
 
@@ -121,8 +143,8 @@ module EasyAPP
     end
 
 
-    def button_with_icon(icon)
-      content_tag(:button, icon(icon, aligned: false, fixed: true), type: 'button', class: button_default_css_class)
+    def button_with_icon(icon, type: 'button')
+      content_tag(:button, icon(icon, aligned: false, fixed: true), type: type, class: button_default_css_class)
     end
 
 

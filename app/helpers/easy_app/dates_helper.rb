@@ -1,7 +1,7 @@
 module EasyAPP
   module DatesHelper
 
-    def render_date(date)
+    def ll(date)
       date != '' ? l(date) : ''
     end
 

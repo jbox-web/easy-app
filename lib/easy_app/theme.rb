@@ -39,6 +39,11 @@ module EasyAPP
     end
 
 
+    def icon_name_for(type)
+      icon_pack.icons_mapping[type]
+    end
+
+
     def image_file?(content_type)
       icon_pack.image_icons_mapping.keys.include?(content_type)
     end

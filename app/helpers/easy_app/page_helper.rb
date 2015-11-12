@@ -9,6 +9,8 @@ module EasyAPP
     def page_title
       if @page_title.is_a?(Array)
         @page_title.join(' - ')
+      elsif @page_title.nil?
+        t('.title')
       else
         @page_title
       end

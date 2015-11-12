@@ -63,7 +63,7 @@ module EasyAPP
 
     def sidebar_menu(&block)
       proc do |menu|
-        menu.dom_class = EasyAPP::Theme.navmenu_class
+        menu.dom_class = get_current_theme.navmenu_class
         yield menu
       end
     end
@@ -71,7 +71,7 @@ module EasyAPP
 
     def topbar_right_menu(&block)
       proc do |menu|
-        menu.dom_class = EasyAPP::Theme.navbar_top_right_class
+        menu.dom_class = get_current_theme.navbar_top_right_class
         yield menu
       end
     end
@@ -79,7 +79,7 @@ module EasyAPP
 
     def topbar_left_menu(&block)
       proc do |menu|
-        menu.dom_class = EasyAPP::Theme.navbar_top_left_class
+        menu.dom_class = get_current_theme.navbar_top_left_class
         yield menu
       end
     end
@@ -91,7 +91,14 @@ module EasyAPP
 
 
     def navmenu_options
-      { renderer: :bootstrap3, expand_all: true, remove_navigation_class: true, skip_if_empty: true }
+      { renderer: :bootstrap3, expand_all: true, remove_navigation_class: false, skip_if_empty: true }
+    end
+
+
+    def get_current_theme
+      "#{User.current.current_theme.capitalize}::Theme".constantize
+    rescue NameError
+      EasyAPP::Theme
     end
 
   end

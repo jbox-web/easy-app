@@ -4,12 +4,12 @@ module EasyAPP
       extend self
 
       def navbar_top_right_class
-        %w(nav navbar-nav navbar-right)
+        %w(nav navbar-right)
       end
 
 
       def navbar_top_left_class
-        %w(nav navbar-nav navbar-left)
+        %w(nav navbar-left)
       end
 
 

@@ -31,7 +31,7 @@ module EasyAPP
 
 
       def error_layout
-        request.xhr? ? false : 'application'
+        request.xhr? ? false : User.current.current_theme
       end
 
     end

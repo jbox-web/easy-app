@@ -43,18 +43,18 @@ module EasyAPP
     end
 
 
-    def render_page_content(opts = {})
-      sidebar = render 'layouts/sidebar'
+    def render_page_content(sidebar_partial:, page_partial:, class_with_sidebar:, class_without_sidebar:)
+      sidebar = render sidebar_partial
       if sidebar.strip != ''
-        sidebar + render_page_within_layout(opts)
+        sidebar + render_page_within_layout(page_partial, class: class_with_sidebar)
       else
-        render_page_within_layout(class: EasyAPP::Theme.full_width_class)
+        render_page_within_layout(page_partial, class: class_without_sidebar)
       end
     end
 
 
-    def render_page_within_layout(opts = {})
-      content_tag(:div, render('layouts/page'), opts)
+    def render_page_within_layout(partial, opts = {})
+      content_tag(:div, render(partial), opts)
     end
 
 
@@ -80,7 +80,7 @@ module EasyAPP
       begin
         klass = constantize_menu(menu)
       rescue NameError
-        raise EasyAPP::Error::MenuNotFound, "MenuNotFound: #{klass_name}"
+        raise EasyAPP::Error::MenuNotFound, "MenuNotFound: #{menu}_navigation"
       else
         klass
       end

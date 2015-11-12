@@ -12,6 +12,16 @@ module EasyAPP
 
         module InstanceMethods
 
+
+          def autocomplete_field(method, source, options = {})
+            form_group_builder(method, options) do
+              prepend_and_append_input(options) do
+                @template.autocomplete_field(@object_name, method, source, objectify_options(options))
+              end
+            end
+          end
+
+
           def success(name = nil, options = {})
             # Get icon
             icon = options.delete(:icon) { 'fa-check' }
