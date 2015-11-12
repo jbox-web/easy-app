@@ -23,4 +23,5 @@
 #= require bootstrap-markdown-bundle
 #= require bootstrap-tagsinput
 #= require select2
+#= require smart_listing
 #= require_tree .

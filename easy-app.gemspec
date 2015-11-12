@@ -85,6 +85,9 @@ Gem::Specification.new do |s|
   # JQueryDataTables
   s.add_dependency 'ajax-datatables-rails'
 
+  # List views
+  s.add_dependency 'smart_listing'
+
   # Markdown editor
   s.add_dependency 'rails-bootstrap-markdown'
   s.add_dependency 'html-pipeline'
