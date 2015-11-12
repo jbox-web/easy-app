@@ -1,5 +1,7 @@
 ## EasyAPP
 
+[![Dependency Status](https://gemnasium.com/jbox-web/easy-app.svg)](https://gemnasium.com/jbox-web/easy-app)
+
 ## Installation
 
 ```ruby
