@@ -21,7 +21,7 @@ module EasyAPP
 
 
         def set_page_lang
-          @page_lang = I18n.default_locale
+          @page_lang = User.current.language
         end
 
     end
