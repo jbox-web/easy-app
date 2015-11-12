@@ -3,6 +3,13 @@ require 'uri'
 module EasyAPP
   module LinksHelper
 
+    def link_to_show(url, link_opts = {}, icon_opts = {})
+      label = link_opts.delete(:label) { '' }
+      icon  = icon_opts.delete(:icon) { 'fa-eye' }
+      link_to label_with_icon(label, icon, icon_opts.reverse_merge(bigger: false)), url, link_opts
+    end
+
+
     def link_to_add(url, link_opts = {}, icon_opts = {})
       label = link_opts.delete(:label) { '' }
       icon  = icon_opts.delete(:icon) { 'fa-plus' }
