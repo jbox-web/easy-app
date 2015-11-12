@@ -17,11 +17,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '~> 4.2', '>= 4.2.4'
 
   # Server
-  s.add_dependency 'puma', '~> 2.14.0', '>= 2.14'
+  s.add_dependency 'puma'
 
   # Database
   s.add_dependency 'mysql2', '~> 0.3.20', '>= 0.3'
-  s.add_dependency 'pg',     '~> 0.18.2', '>= 0.18'
+  s.add_dependency 'pg'
 
   # Configuration
   s.add_dependency 'settingslogic'
