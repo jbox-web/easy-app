@@ -60,6 +60,7 @@ Gem::Specification.new do |s|
   # Menus
   s.add_dependency 'simple-navigation'
   s.add_dependency 'simple_navigation_renderers'
+  s.add_dependency 'rails_bootstrap_navbar'
 
   # Breadcrumbs
   s.add_dependency 'crummy'
