@@ -76,6 +76,9 @@ Gem::Specification.new do |s|
   # Select2
   s.add_dependency 'select2-rails'
 
+  # Autocomplete
+  s.add_dependency 'rails-jquery-autocomplete'
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
