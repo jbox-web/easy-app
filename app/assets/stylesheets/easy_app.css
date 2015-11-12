@@ -15,8 +15,3 @@
  *= require bootstrap3-switch
  *= require_tree .
  */
-
-html.turbolinks-progress-bar::before {
-  background-color: #008183 !important;
-  height: 5px !important;
-}
