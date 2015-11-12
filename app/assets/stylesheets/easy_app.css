@@ -14,6 +14,7 @@
  *= require font-awesome
  *= require bootstrap3-switch
  *= require bootstrap-tagsinput
+ *= require bootstrap-markdown
  *= require select2
  *= require select2-bootstrap
  *= require_tree .

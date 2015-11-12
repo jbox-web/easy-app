@@ -82,6 +82,14 @@ Gem::Specification.new do |s|
   # Search
   s.add_dependency 'pg_search'
 
+  # Markdown editor
+  s.add_dependency 'rails-bootstrap-markdown'
+  s.add_dependency 'html-pipeline'
+  s.add_dependency 'redcarpet'
+  s.add_dependency 'pygments.rb'
+  s.add_dependency 'task_list'
+  s.add_dependency 'rinku'
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
