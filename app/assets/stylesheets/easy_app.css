@@ -23,3 +23,9 @@
 .shifted div.checkbox label {
   padding-left: 0px;
 }
+
+
+.input-group .select2-selection {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
