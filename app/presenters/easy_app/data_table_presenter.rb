@@ -159,6 +159,7 @@ module EasyAPP
             serverSide: true,
             responsive: true,
             stateSave:  true,
+            select:     true,
             buttons:    #{@buttons.to_json},
             dom:        '#{@dom}',
             order:      #{@order},

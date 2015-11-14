@@ -79,26 +79,29 @@
 #context-menu a:hover {
   color: #2a5685;
 }
+
 #context-menu li.folder:hover {
   z-index: 40;
 }
+
 #context-menu ul ul, #context-menu li:hover ul ul {
   display: none;
 }
+
 #context-menu li:hover ul, #context-menu li:hover li:hover ul {
   display: block;
 }
 
-.context-menu-selection {
+.has-context-menu.selected {
   background-color: #2996cc !important;
   color: #fff !important;
 }
 
-.context-menu-selection a, .context-menu-selection a:hover {
+.has-context-menu.selected a, .has-context-menu.selected a:hover {
   color: #fff !important;
 }
 
-.context-menu-selection:hover {
+.has-context-menu.selected:hover {
   background-color: #2996cc !important;
   color: #fff !important;
 }

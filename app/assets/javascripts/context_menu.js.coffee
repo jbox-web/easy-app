@@ -32,9 +32,9 @@ root.contextMenuClick = (event) ->
       if target.is('input')
         # a checkbox may be clicked
         if target.prop('checked')
-          tr.addClass('context-menu-selection')
+          tr.addClass('selected')
         else
-          tr.removeClass('context-menu-selection')
+          tr.removeClass('selected')
       else
         if event.ctrlKey || event.metaKey
           contextMenuToggleSelection(tr)
@@ -141,17 +141,17 @@ root.contextMenuToggleSelection = (tr) ->
 
 
 root.contextMenuAddSelection = (tr) ->
-  tr.addClass('context-menu-selection')
+  tr.addClass('selected')
   contextMenuCheckSelectionBox(tr, true)
 
 
 root.contextMenuRemoveSelection = (tr) ->
-  tr.removeClass('context-menu-selection')
+  tr.removeClass('selected')
   contextMenuCheckSelectionBox(tr, false)
 
 
 root.contextMenuIsSelected = (tr) ->
-  return tr.hasClass('context-menu-selection')
+  return tr.hasClass('selected')
 
 
 root.contextMenuCheckSelectionBox = (tr, checked) ->
