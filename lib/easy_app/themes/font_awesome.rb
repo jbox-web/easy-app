@@ -10,6 +10,18 @@ module EasyAPP
           .merge(image_icons_mapping)
           .merge(archive_icons_mapping)
           .merge(document_icons_mapping)
+          .merge(prefix_icons_mapping)
+      end
+
+
+      def prefix_icons_mapping
+        {
+          m:     'fa-mars',
+          mme:   'fa-venus',
+          m2:    'fa-mars-double',
+          mme2:  'fa-venus-double',
+          m_mme: 'fa-venus-mars'
+        }
       end
 
 

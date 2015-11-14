@@ -44,6 +44,12 @@ module EasyAPP
     end
 
 
+    def icon_name_for_prefix(prefix)
+      prefix = prefix.downcase.sub('&', '_').to_sym
+      icon_pack.prefix_icons_mapping[prefix]
+    end
+
+
     def image_file?(content_type)
       icon_pack.image_icons_mapping.keys.include?(content_type)
     end
