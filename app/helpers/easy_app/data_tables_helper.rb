@@ -1,7 +1,7 @@
 module EasyAPP
   module DataTablesHelper
 
-    def render_datatables_translations
+    def datatables_translations
       data = {}
       data[:processing]     = t('datatables.processing')
       data[:search]         = t('datatables.search')
@@ -25,7 +25,14 @@ module EasyAPP
       data[:buttons][:pageLength] = {}
       data[:buttons][:pageLength][:_]    = t('datatables.buttons.pageLength._')
       data[:buttons][:pageLength][:'-1'] = t('datatables.buttons.pageLength.-1')
-      data.to_json
+      data
+    end
+
+
+    def datatables_for(id, opts = {}, &block)
+      datatable = DataTablePresenter.new(self, id, opts)
+      yield datatable if block_given?
+      datatable
     end
 
   end

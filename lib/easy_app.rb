@@ -35,4 +35,5 @@ module EasyAPP
 
   require 'easy_app/core_ext/bootstrap_form/instance_tag'
   require 'easy_app/core_ext/bootstrap_form/form_builder_patch'
+  require 'easy_app/core_ext/string/quote'
 end
