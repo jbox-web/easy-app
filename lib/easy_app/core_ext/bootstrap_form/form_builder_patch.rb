@@ -6,7 +6,7 @@ module EasyAPP
       module FormBuilderPatch
 
         def self.included(base)
-          base.send(:include, InstanceMethods)
+          base.send(:prepend, InstanceMethods)
         end
 
 
@@ -76,6 +76,11 @@ module EasyAPP
 
             def button_default_css_class
               ['btn', 'btn-default']
+            end
+
+
+            def generate_icon(icon)
+              content_tag(:span, "", class: "fa fa-#{icon} form-control-feedback")
             end
 
         end
