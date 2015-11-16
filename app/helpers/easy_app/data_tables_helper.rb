@@ -30,7 +30,7 @@ module EasyAPP
 
 
     def datatables_for(id, opts = {}, &block)
-      datatable = DataTablePresenter.new(self, id, opts)
+      datatable = EasyAPP::DataTablePresenter.new(self, id, opts)
       yield datatable if block_given?
       datatable
     end

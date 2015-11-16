@@ -155,20 +155,29 @@ module EasyAPP
       def datatable_options
         raw("
           {
-            processing: true,
-            serverSide: true,
-            responsive: true,
-            stateSave:  true,
-            select:     true,
-            buttons:    #{@buttons.to_json},
-            dom:        '#{@dom}',
-            order:      #{@order},
-            language:   #{datatables_translations.to_json},
-            ajax:       $('##{id}').data('source'),
-            pagingType: 'full_numbers',
-            columnDefs: [{ targets: 'no-sort', orderable: false }, { targets: 'no-search', searchable: false }]#{add_callbacks}
+            processing:  true,
+            serverSide:  true,
+            responsive:  false,
+            stateSave:   true,
+            buttons:     #{@buttons.to_json},
+            dom:         '#{@dom}',
+            order:       #{@order},
+            language:    #{datatables_translations.to_json},
+            ajax:        $('##{id}').data('source'),
+            pagingType:  'full_numbers',
+            columnDefs:  [{ targets: 'no-sort', orderable: false }, { targets: 'no-search', searchable: false }]#{add_callbacks},
+            columns:     #{datatable_columns.to_json}
           }
         ")
+      end
+
+
+      def datatable_columns
+        data = []
+        @columns.each_with_index do |_, i|
+          data << { data: i.to_s }
+        end
+        data
       end
 
 

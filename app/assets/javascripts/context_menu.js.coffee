@@ -6,7 +6,7 @@ root.contextMenuRightClick = (event) ->
   tr = target.parents('tr').first()
   return if !tr.hasClass('has-context-menu')
   event.preventDefault()
-  if (!contextMenuIsSelected(tr))
+  if !contextMenuIsSelected(tr)
     contextMenuUnselectAll()
     contextMenuAddSelection(tr)
     contextMenuSetLastSelected(tr)
@@ -134,7 +134,7 @@ root.contextMenuHide = ->
 
 
 root.contextMenuToggleSelection = (tr) ->
-  if (contextMenuIsSelected(tr))
+  if contextMenuIsSelected(tr)
     contextMenuRemoveSelection(tr)
   else
     contextMenuAddSelection(tr)
