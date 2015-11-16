@@ -157,7 +157,7 @@ module EasyAPP
           {
             processing:  true,
             serverSide:  true,
-            responsive:  false,
+            responsive:  true,
             stateSave:   true,
             buttons:     #{@buttons.to_json},
             dom:         '#{@dom}',
