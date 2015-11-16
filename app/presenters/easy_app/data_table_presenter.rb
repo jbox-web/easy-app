@@ -165,7 +165,9 @@ module EasyAPP
             language:    #{datatables_translations.to_json},
             ajax:        $('##{id}').data('source'),
             pagingType:  'full_numbers',
-            columnDefs:  [{ targets: 'no-sort', orderable: false }, { targets: 'no-search', searchable: false }]#{add_callbacks},
+            columnDefs:  [{ targets: 'no-sort', orderable: false }, { targets: 'no-search', searchable: false }],
+            #{add_on_created_row_callback}
+            #{add_on_draw_callback}
             columns:     #{datatable_columns.to_json}
           }
         ")
@@ -181,22 +183,15 @@ module EasyAPP
       end
 
 
-      def add_callbacks
-        return '' if @on_draw.empty? && on_created_row.empty?
-        content = ','
-        content << add_on_created_row_callback if @on_created_row.any?
-        content << add_on_draw_callback if @on_draw.any?
-        content
-      end
-
-
       def add_on_created_row_callback
+        return '' if @on_created_row.empty?
         raw("createdRow: function(row, data, index) { #{@on_created_row.join(';')} },")
       end
 
 
       def add_on_draw_callback
-        raw("drawCallback: function(settings, json) { #{@on_draw.join(';')} }")
+        return '' if @on_draw.empty?
+        raw("drawCallback: function(settings, json) { #{@on_draw.join(';')} },")
       end
 
   end
