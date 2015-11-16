@@ -59,7 +59,7 @@
 				Description:		When set to true, the value of the data attribute will be fed into the filter as is (without any modification/decoration).
 									Perfect to use when you want to define your own <option></option> for the filter
 				Note:				Currently supported by the select / multi_select filters
-				
+
 * append_data_to_table_data
 				Required:			false
 				Type:				string
@@ -3157,7 +3157,7 @@ var yadcf = (function ($) {
 				if (clear === 'clear' && exGetColumnFilterVal(oTable, column_number) === '') {
 					return;
 				}
-				$("#yadcf-filter-" + table_selector_jq_friendly + "-" + column_number).val("").focus();
+				$("#yadcf-filter-" + table_selector_jq_friendly + "-" + column_number).val("");
 				$("#yadcf-filter-" + table_selector_jq_friendly + "-" + column_number).removeClass("inuse");
 				oTable.fnFilter("", column_number_filter);
 				resetIApiIndex();
