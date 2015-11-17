@@ -2,7 +2,7 @@ module EasyAPP
   module ThemeHelper
 
     def available_themes
-      ThemesOnRails.all
+      ThemesOnRails.all.sort
     end
 
   end
