@@ -85,6 +85,11 @@ module EasyAPP
     end
 
 
+    def dropdown_menu_class
+      get_current_theme.dropdown_menu_class
+    end
+
+
     def renderable?
       true
     end
