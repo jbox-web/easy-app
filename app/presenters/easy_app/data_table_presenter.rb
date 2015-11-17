@@ -14,6 +14,7 @@ module EasyAPP
       @body_opts = {}
       @on_created_row = []
       @on_draw        = []
+      @on_responsive_display = []
       @search_fields  = []
       @escape_strings = []
     end
@@ -62,6 +63,11 @@ module EasyAPP
 
     def on_draw(callbacks)
       @on_draw = callbacks
+    end
+
+
+    def on_responsive_display(callbacks)
+      @on_responsive_display = callbacks
     end
 
 
@@ -136,40 +142,37 @@ module EasyAPP
 
       def datatable_js
         javascript_tag do
-          raw("
-            table = $('##{id}').DataTable(#{datatable_options})
-            yadcf.init(table, #{search_fields}, 'footer')
-            $('.yadcf-filter-wrapper').each(function() {
-              $(this).children().wrapAll('<div class=\"col-md-12\"></div>').wrapAll('<div class=\"input-group\"></div>');
-              return $(this).children().wrapAll('<div class=\"form-group\"></div>');
-            });
-
-            $('.yadcf-filter-reset-button').addClass('btn btn-default').wrap('<span class=\"input-group-btn\"></span>');
-
-            $('.yadcf-filter').addClass('form-control');
-          ")
+        raw("
+          table = $('##{id}').DataTable({#{datatable_options}});
+          yadcf.init(table, #{search_fields}, 'footer');
+          $('.yadcf-filter-wrapper').each(function() {
+            $(this).children().wrapAll('<div class=\"col-md-12\"></div>').wrapAll('<div class=\"input-group\"></div>');
+            return $(this).children().wrapAll('<div class=\"form-group\"></div>');
+          });
+          $('.yadcf-filter-reset-button').addClass('btn btn-default').wrap('<span class=\"input-group-btn\"></span>');
+          $('.yadcf-filter').addClass('form-control');
+          #{add_on_responsive_display_callback}
+        ")
         end
       end
 
 
       def datatable_options
         raw("
-          {
-            processing:  true,
-            serverSide:  true,
-            responsive:  true,
-            stateSave:   true,
-            buttons:     #{@buttons.to_json},
-            dom:         '#{@dom}',
-            order:       #{@order},
-            language:    #{datatables_translations.to_json},
-            ajax:        $('##{id}').data('source'),
-            pagingType:  'full_numbers',
-            columnDefs:  [{ targets: 'no-sort', orderable: false }, { targets: 'no-search', searchable: false }],
-            #{add_on_created_row_callback}
-            #{add_on_draw_callback}
-            columns:     #{datatable_columns.to_json}
-          }
+          processing:  true,
+          serverSide:  true,
+          responsive:  true,
+          stateSave:   true,
+          buttons:     #{@buttons.to_json},
+          dom:         '#{@dom}',
+          order:       #{@order},
+          language:    #{datatables_translations.to_json},
+          ajax:        $('##{id}').data('source'),
+          pagingType:  'full_numbers',
+          columnDefs:  [{ targets: 'no-sort', orderable: false }, { targets: 'no-search', searchable: false }],
+          #{add_on_created_row_callback}
+          #{add_on_draw_callback}
+          columns:     #{datatable_columns.to_json}
         ")
       end
 
@@ -185,13 +188,23 @@ module EasyAPP
 
       def add_on_created_row_callback
         return '' if @on_created_row.empty?
-        raw("createdRow: function(row, data, index) { #{@on_created_row.join(';')} },")
+        raw("createdRow: function(row, data, index) { #{@on_created_row.join(' ')} },")
       end
 
 
       def add_on_draw_callback
         return '' if @on_draw.empty?
-        raw("drawCallback: function(settings, json) { #{@on_draw.join(';')} },")
+        raw("drawCallback: function(settings, json) { #{@on_draw.join(' ')} },")
+      end
+
+
+      def add_on_responsive_display_callback
+        return '' if @on_responsive_display.empty?
+        raw("
+          table.on('responsive-display', function (e, datatable, row, showHide, update) {
+            #{@on_responsive_display.join(' ')}
+          });
+        ")
       end
 
   end
