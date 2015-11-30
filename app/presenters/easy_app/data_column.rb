@@ -23,11 +23,13 @@ module EasyAPP
     end
 
 
+    def visible?
+      @opts.fetch(:visible, true)
+    end
+
+
     def css_class
-      css = []
-      css << 'no-search' unless searchable?
-      css << 'no-sort' unless sortable?
-      css
+      @opts[:class] || ''
     end
 
   end

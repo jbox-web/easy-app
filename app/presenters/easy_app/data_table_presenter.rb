@@ -3,15 +3,16 @@ module EasyAPP
 
     def initialize(view, id, opts = {})
       super(view)
-      @view      = view
-      @id        = id
-      @opts      = opts
-      @columns   = []
-      @buttons   = []
-      @order     = []
-      @dom       = 'lfrtip'
-      @source    = nil
-      @body_opts = {}
+      @view       = view
+      @id         = id
+      @opts       = opts
+      @columns    = []
+      @buttons    = []
+      @order      = []
+      @dom        = 'lfrtip'
+      @source     = nil
+      @body_opts  = {}
+      @save_state = true
       @on_created_row = []
       @on_draw        = []
       @on_responsive_display = []
@@ -38,6 +39,11 @@ module EasyAPP
     def render_datatable
       options = @opts.merge({ id: id, data: { source: @source } })
       content_tag(:table, table_content, options) + datatable_js
+    end
+
+
+    def save_state(state)
+      @save_state = state
     end
 
 
@@ -99,7 +105,7 @@ module EasyAPP
 
 
     def escape_strings(strings)
-      @escape_strings = strings
+      @escape_strings += strings
     end
 
 
@@ -133,7 +139,7 @@ module EasyAPP
 
       def search_fields
         fields = @search_fields.to_json
-        @escape_strings.each do |str|
+        @escape_strings.uniq.each do |str|
           fields = fields.gsub(str.quote, str.unquote)
         end
         fields
@@ -162,14 +168,13 @@ module EasyAPP
           processing:  true,
           serverSide:  true,
           responsive:  true,
-          stateSave:   true,
+          stateSave:   #{@save_state},
           buttons:     #{@buttons.to_json},
           dom:         '#{@dom}',
           order:       #{@order},
           language:    #{datatables_translations.to_json},
           ajax:        $('##{id}').data('source'),
           pagingType:  'full_numbers',
-          columnDefs:  [{ targets: 'no-sort', orderable: false }, { targets: 'no-search', searchable: false }],
           #{add_on_created_row_callback}
           #{add_on_draw_callback}
           columns:     #{datatable_columns.to_json}
@@ -179,8 +184,8 @@ module EasyAPP
 
       def datatable_columns
         data = []
-        @columns.each_with_index do |_, i|
-          data << { data: i.to_s }
+        @columns.each_with_index do |c, i|
+          data << { data: i, className: c.css_class, visible: c.visible?, orderable: c.sortable?, searchable: c.searchable? }
         end
         data
       end
