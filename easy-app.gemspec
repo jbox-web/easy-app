@@ -14,13 +14,13 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
 
   # Rails
-  s.add_dependency 'rails', '~> 4.2', '>= 4.2.4'
+  s.add_dependency 'rails', '~> 4.2', '>= 4.2.5'
 
   # Server
   s.add_dependency 'puma'
 
   # Database
-  s.add_dependency 'mysql2', '~> 0.3.20', '>= 0.3'
+  s.add_dependency 'mysql2'
   s.add_dependency 'pg'
 
   # Configuration
