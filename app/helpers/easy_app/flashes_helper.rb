@@ -60,5 +60,13 @@ module EasyAPP
       EasyAPP::Theme.flash_default_css
     end
 
+
+    def button_close
+      content_tag(:button, class: 'close', data: { dismiss: 'alert' }) do
+        content_tag(:span, '&times;'.html_safe, 'aria-hidden' => 'true') +
+        content_tag(:span, 'Close', class: 'sr-only')
+      end
+    end
+
   end
 end
