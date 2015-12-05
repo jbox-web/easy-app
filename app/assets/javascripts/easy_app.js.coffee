@@ -24,3 +24,7 @@
 #= require bootstrap-tagsinput
 #= require smart_listing
 #= require_tree .
+
+$(document).on('ready page:load', contextMenuUnselectAll)
+$(document).on('click', contextMenuClick)
+$(document).on('contextmenu', contextMenuRightClick)

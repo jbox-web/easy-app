@@ -1,18 +1,16 @@
 root = exports ? this
 
-root.setModalBox = ->
-  $('a[data-toggle="ajax-modal"]').on 'click', (event) ->
-    event.preventDefault()
-    draggable = $(this).data('draggable')
-    size      = $(this).data('modal-size')
-    $.get $(this).attr('href'), (data) ->
-      if draggable
-        $('#modal-holder').html(data).find('.modal').modal().draggable()
-      else
-        $('#modal-holder').html(data).find('.modal').modal()
-      if size
-        $('.modal-dialog').addClass('modal-' + size)
-    return false
+root.openModalBox = (element) ->
+  draggable = $(element).data('draggable')
+  size      = $(element).data('modal-size')
+  $.get $(element).attr('href'), (data) ->
+    if draggable
+      $('#modal-holder').html(data).find('.modal').modal().draggable()
+    else
+      $('#modal-holder').html(data).find('.modal').modal()
+    if size
+      $('.modal-dialog').addClass('modal-' + size)
+  return false
 
 
 root.createBootstrapSwitch = (element) ->
@@ -32,3 +30,41 @@ root.toggleElement = (event, checked, element) ->
 
 root.highlight = (element) ->
   $(element).effect('highlight', { color: '#B0D6D6' }, 1500)
+
+
+root.toggleCheckboxes = (element, selector) ->
+  all_checked = $(element).is(':checked')
+  $(selector).each ->
+    $(this).prop('checked', all_checked)
+    if all_checked == true
+      $(this).parent().parent().addClass('selected')
+    else
+      $(this).parent().parent().removeClass('selected')
+
+
+root.setContextualMenuForRow = (row) ->
+  $(row).addClass('has-context-menu')
+
+
+root.setBootstrapRowStatus = (row) ->
+  status = $(row).find('td.status').html()
+  if status == '1'
+    $(row).addClass('success')
+  else if status == '2'
+    $(row).addClass('warning')
+  else if status == '3'
+    $(row).addClass('danger')
+
+
+root.formatRatyField = (state) ->
+  return state.text if !state.id || state.element.value == '-1'
+  return startContainer(state.element.value, 5)
+
+starOnImage = ->
+  '<%= image_tag("star-on.png") %>'
+
+starOffImage = ->
+  '<%= image_tag("star-off.png") %>'
+
+startContainer = (stars, max) ->
+  $('<span>' + (starOnImage() for num in [0...stars]).join(' ') + ' ' + (starOffImage() for num in [0...(max-stars)]).join(' ') + '</span>')
