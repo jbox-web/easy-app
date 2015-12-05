@@ -6,6 +6,8 @@
 
 ## Installation
 
+Add the following line to your Gemfile :
+
 ```ruby
 gem 'easy-app', '~> 1.0.0', git: 'https://github.com/jbox-web/easy-app.git', tag: '1.0.0'
 ```
