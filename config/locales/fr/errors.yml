@@ -1,0 +1,8 @@
+fr:
+
+  errors:
+    not_authorized: "Vous n'êtes pas autorisé à accéder à cette page."
+    file_not_found: "La page à laquelle vous souhaitez accéder n'existe pas ou a été supprimée."
+
+    account:
+      disabled: Votre compte a été désactivé !

@@ -1,0 +1,59 @@
+fr:
+
+  prefix:
+    mister: Monsieur
+    mister_square: Monsieur²
+    madam: Madame
+    madam_square: Madame²
+    mister_and_madam: Monsieur et Madame
+
+  language:
+    name:
+      fr: Français
+      en: Anglais
+
+  text:
+    are_you_sure: Etes vous sur?
+    or: ou
+    by: par
+    copy_to_clipboard: Copier dans le presse papier
+    copied: Copié !
+    welcome: Bienvenue!
+    my_account: Mon compte
+    login: Connexion
+    logout: Déconnexion
+    help: Aide
+    admin: Admin
+    administration: Administration
+    dashboard: Tableau de bord
+    settings: Paramètres
+    sidekiq: Sidekiq
+    logster: Logster
+
+  button:
+    save: Sauvegarder
+    back: Revenir
+    cancel: Annuler
+    continue: Continuer
+    show: Voir
+    add: Ajouter
+    create: Créer
+    clone: Cloner
+    edit: Editer
+    update: Modifier
+    delete: Supprimer
+    signup: S'inscrire
+    send: Envoyer !
+    send_mail: Envoyer un mail
+    check_all: Tout cocher
+    uncheck_all: Tout décocher
+    refresh: Actualiser
+    reset: Réinitialiser
+
+  helpers:
+    select:
+      prompt: Sélectionnez une entrée
+    submit:
+      create: Créer
+      update: Modifier
+      submit: Sauvegarder

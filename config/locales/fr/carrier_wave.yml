@@ -1,0 +1,4 @@
+fr:
+  errors:
+    messages:
+      extension_white_list_error: type de fichier interdit
