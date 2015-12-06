@@ -6,3 +6,8 @@ fr:
 
     account:
       disabled: Votre compte a été désactivé !
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: enregistrement invalide
