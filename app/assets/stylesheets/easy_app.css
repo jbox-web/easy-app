@@ -16,6 +16,7 @@
  *= require bootstrap-tagsinput
  *= require bootstrap-markdown
  *= require fullcalendar
+ *= require jquery.minicolors
  *= require select2
  *= require select2-bootstrap
  *= require_tree .

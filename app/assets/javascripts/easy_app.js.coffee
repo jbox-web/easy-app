@@ -17,6 +17,7 @@
 #= require jquery-ui/effect
 #= require jquery-ui/effect-highlight
 #= require jquery-ui/sortable
+#= require jquery.minicolors
 #= require autocomplete-rails
 #= require bootstrap-sprockets
 #= require bootstrap-switch
