@@ -1,6 +1,8 @@
 module EasyAPP
   module FullCalendarHelper
 
+    FULL_CALENDAR_FILE_PATH = Rails.root.join('config', 'full_calendar.yml')
+
     def render_full_calendar(opts = {})
       id  = opts.delete(:id) { 'calendar' }
       css = opts.delete(:class) { 'calendar' }
@@ -19,13 +21,23 @@ module EasyAPP
         selectable:     true,
         editable:       true,
         first_day:      1,
-        business_hours: true,
-        slot_minutes:   15,
+        business_hours: {
+          start: '09:00',
+          end:   '18:00'
+        },
+        slot_duration:  '00:15:00',
+        min_time:       '09:00:00',
+        max_time:       '18:00:00',
         event_limit:    true,
         height:         500,
         drag_opacity:   0.5,
-        time_format:    'H:mm t'
-      }
+        time_format:    'H:mm'
+      }.merge(full_calendar_config)
+    end
+
+
+    def full_calendar_config
+      File.exists?(FULL_CALENDAR_FILE_PATH) ? (YAML::load_file(FULL_CALENDAR_FILE_PATH) || {}) : {}
     end
 
   end
