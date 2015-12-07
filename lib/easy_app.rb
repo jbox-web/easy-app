@@ -16,6 +16,8 @@ Gem.loaded_specs['easy-app'].dependencies.each do |d|
   end
 end
 
+require 'tilt/coffee'
+
 # Load Engine
 module EasyAPP
   mattr_accessor :app_root
