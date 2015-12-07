@@ -29,6 +29,7 @@ fr:
     settings: Paramètres
     sidekiq: Sidekiq
     logster: Logster
+    save_in_progress: Sauvegarde en cours...
 
   button:
     save: Sauvegarder
