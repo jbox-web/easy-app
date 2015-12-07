@@ -20,18 +20,20 @@ module EasyAPP
         },
         selectable:     true,
         editable:       true,
+        weekends:       false,
         first_day:      1,
+        event_limit:    true,
         business_hours: {
           start: '09:00',
           end:   '18:00'
         },
-        slot_duration:  '00:15:00',
-        min_time:       '09:00:00',
-        max_time:       '18:00:00',
-        event_limit:    true,
-        height:         500,
-        drag_opacity:   0.5,
-        time_format:    'H:mm'
+        slot_duration:   '00:15:00',
+        min_time:        '09:00:00',
+        max_time:        '18:00:00',
+        time_format:     'HH:mm',
+        datetime_format: 'DD/MM/YYYY HH:mm',
+        height:          500,
+        drag_opacity:    0.5
       }.merge(full_calendar_config)
     end
 
