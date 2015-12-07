@@ -67,8 +67,9 @@ module EasyAPP
     end
 
 
-    def button_with_icon(icon, type: 'button')
-      content_tag(:button, icon(icon, aligned: false, fixed: true), type: type, class: button_default_css_class)
+    def button_with_icon(icon, opts = {})
+      opts = { type: 'button', class: button_default_css_class }.merge(opts)
+      content_tag(:button, icon(icon, aligned: false, fixed: true), opts)
     end
 
 
