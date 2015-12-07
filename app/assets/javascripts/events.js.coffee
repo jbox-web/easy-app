@@ -28,14 +28,13 @@ root.FullCalendar =
       eventClick: (event, jsEvent, view) ->
         FullCalendar.Events.show(event)
 
-      select: (startDate, endDate, allDay, jsEvent, view) ->
+      select: (start, end, jsEvent, view) ->
         FullCalendar.Form.display
-          start_time:  new Date(startDate.toDate())
-          end_time:    new Date(endDate.toDate())
-          allDay:      allDay
-          newEventUrl: jsEvent.options.newEventUrl
+          start_time:  start
+          end_time:    end
+          allDay:      !start.hasTime() && !end.hasTime()
+          newEventUrl: view.options.newEventUrl
     options
-
 
   Events:
 
@@ -99,9 +98,10 @@ root.FullCalendar =
       return($('meta[name="csrf-token"]').attr("content"))
 
     set_form_options: (options) ->
-      startTime = options['start_time'] || new Date()
-      endTime   = options['end_time'] || new Date(startTime.getTime())
-      if startTime.getTime() == endTime.getTime()
-        endTime.setMinutes(startTime.getMinutes() + 15)
+      format    = options['datetimeFormat'] || 'DD/MM/YYYY HH:mm'
+      startTime = (options['start_time']    || moment().floor(15, 'minutes')).format(format)
+      endTime   = (options['end_time']      || moment().ceil(15, 'minutes')).format(format)
+      allDay    = options['allDay']         || false
       $('#event_start_time').val(startTime)
       $('#event_end_time').val(endTime)
+      $('#event_all_day').bootstrapSwitch('state', allDay)
