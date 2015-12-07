@@ -56,17 +56,17 @@ root.FullCalendar =
       authenticity_token: FullCalendar.Form.authenticity_token()
 
     move: (event, delta, revertFunc) ->
-      url = event.path + "/move"
+      url = event.path + '/move'
       data = FullCalendar.Events.prepare_data(event, delta)
       FullCalendar.Events.send_request(url, data, revertFunc)
 
     resize: (event, delta, revertFunc) ->
-      url = event.path + "/resize"
+      url = event.path + '/resize'
       data = FullCalendar.Events.prepare_data(event, delta)
       FullCalendar.Events.send_request(url, data, revertFunc)
 
     show: (event) ->
-      url = event.path + "/edit"
+      url = event.path + '/edit'
       $.get url, (data) ->
         $('#modal-holder').html(data).find('.modal').modal()
 
@@ -95,7 +95,7 @@ root.FullCalendar =
       $('#modal-holder').find('.modal').modal()
 
     authenticity_token: ->
-      return($('meta[name="csrf-token"]').attr("content"))
+      $('meta[name="csrf-token"]').attr('content')
 
     set_form_options: (options) ->
       format    = options['datetimeFormat'] || 'DD/MM/YYYY HH:mm'
