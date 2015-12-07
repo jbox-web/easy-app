@@ -70,14 +70,6 @@ root.FullCalendar =
       $.get url, (data) ->
         $('#modal-holder').html(data).find('.modal').modal()
 
-    toggle_period_and_frequency: (value) ->
-      if value == 'no_repeat'
-        $('#frequency').hide()
-        $('#period').html('')
-      else
-        $('#period').html(value)
-        $('#frequency').show()
-
   Form:
 
     display: (options) ->
@@ -97,11 +89,26 @@ root.FullCalendar =
     authenticity_token: ->
       $('meta[name="csrf-token"]').attr('content')
 
+    toggle_period_and_frequency: (value) ->
+      if value == 'no_repeat'
+        $('#frequency').hide()
+        $('#period').html('')
+      else
+        $('#period').html(value)
+        $('#frequency').show()
+
     set_form_options: (options) ->
       format    = options['datetimeFormat'] || 'DD/MM/YYYY HH:mm'
-      startTime = (options['start_time']    || moment().floor(15, 'minutes')).format(format)
-      endTime   = (options['end_time']      || moment().ceil(15, 'minutes')).format(format)
+      startTime = options['start_time']     || moment().floor(15, 'minutes')
+      endTime   = options['end_time']       || moment().ceil(15, 'minutes')
       allDay    = options['allDay']         || false
-      $('#event_start_time').val(startTime)
-      $('#event_end_time').val(endTime)
+      min_time  = options['min_time']       || '09:00:00'
+      max_time  = options['max_time']       || '18:00:00'
+
+      if allDay == true
+        startTime = moment(moment().format('YYYY-MM-DD') + 'T' + min_time)
+        endTime =   moment(moment().format('YYYY-MM-DD') + 'T' + max_time)
+
+      $('#event_start_time').val(startTime.format(format))
+      $('#event_end_time').val(endTime.format(format))
       $('#event_all_day').bootstrapSwitch('state', allDay)
