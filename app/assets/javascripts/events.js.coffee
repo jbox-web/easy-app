@@ -67,26 +67,17 @@ root.FullCalendar =
       FullCalendar.Events.send_request(url, data, revertFunc)
 
     show: (event) ->
-      $.get event.path, (data) ->
+      url = event.path + "/edit"
+      $.get url, (data) ->
         $('#modal-holder').html(data).find('.modal').modal()
 
-    showPeriodAndFrequency: (value) ->
-      switch (value)
-        when 'Daily'
-          $('#period').html('day')
-          $('#frequency').show()
-        when 'Weekly'
-          $('#period').html('week')
-          $('#frequency').show()
-        when 'Monthly'
-          $('#period').html('month')
-          $('#frequency').show()
-        when 'Yearly'
-          $('#period').html('year')
-          $('#frequency').show()
-        else
-          $('#period').html('')
-          $('#frequency').hide()
+    toggle_period_and_frequency: (value) ->
+      if value == 'no_repeat'
+        $('#frequency').hide()
+        $('#period').html('')
+      else
+        $('#period').html(value)
+        $('#frequency').show()
 
   Form:
 
