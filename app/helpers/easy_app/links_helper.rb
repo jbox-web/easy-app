@@ -91,7 +91,7 @@ module EasyAPP
       if button
         css = link_opts.delete(:class){ '' }
         link_opts = link_opts.merge(class: [css, *button_default_css_class].join(' '))
-        icon_opts = icon_opts.merge(aligned: false)
+        icon_opts = icon_opts.reverse_merge(aligned: false)
       end
 
       if label && icon_name
