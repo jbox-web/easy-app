@@ -22,6 +22,9 @@
 #= require bootstrap-switch
 #= require bootstrap-markdown-bundle
 #= require bootstrap-tagsinput
+#= require moment
+#= require fullcalendar
+#= require fullcalendar/lang-all
 #= require smart_listing
 #= require_tree .
 
