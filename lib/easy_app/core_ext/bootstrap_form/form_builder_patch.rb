@@ -66,6 +66,20 @@ module EasyAPP
           end
 
 
+          def datetime_picker(method, opts = {})
+            icon   = opts.delete(:icon) { 'fa-calendar' }
+            lang   = opts.delete(:lang) { I18.default_locale }
+            step   = opts.delete(:step) { 15 }
+            format = opts.delete(:format) { 'd/m/Y H:i' }
+
+            js_options  = { lang: lang, step: step, format: format }
+            btn_options = { onclick: "$('##{id_for(method)}').datetimepicker('show');" }
+            input_opts  = { class: 'datetimepicker', append: @template.button_with_icon(icon, btn_options) }.merge(opts)
+
+            text_field(method, input_opts) + @template.javascript_tag("$('##{id_for(method)}').datetimepicker(#{js_options.to_json});")
+          end
+
+
           private
 
 
