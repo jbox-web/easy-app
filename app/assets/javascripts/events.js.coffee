@@ -89,25 +89,26 @@ root.FullCalendar =
     authenticity_token: ->
       $('meta[name="csrf-token"]').attr('content')
 
-    toggle_period_and_frequency: (value) ->
+    toggle_repeat_until: (value) ->
       if value == 'no_repeat'
-        $('#frequency').hide()
-        $('#period').html('')
+        $('#repeat_until').hide()
       else
-        $('#period').html(value)
-        $('#frequency').show()
+        $('#repeat_until').show()
 
     set_form_options: (options) ->
       format    = options['datetimeFormat'] || 'DD/MM/YYYY HH:mm'
-      startTime = options['start_time']     || moment().floor(15, 'minutes')
-      endTime   = options['end_time']       || moment().ceil(15, 'minutes')
+      startTime = options['start_time']     || moment()
+      endTime   = options['end_time']       || moment()
       allDay    = options['allDay']         || false
       min_time  = options['min_time']       || '09:00:00'
       max_time  = options['max_time']       || '18:00:00'
 
       if allDay == true
-        startTime = moment(moment().format('YYYY-MM-DD') + 'T' + min_time)
-        endTime =   moment(moment().format('YYYY-MM-DD') + 'T' + max_time)
+        startTime = moment(startTime.format('YYYY-MM-DD') + 'T' + min_time)
+        endTime   = moment(startTime.format('YYYY-MM-DD') + 'T' + max_time)
+      else
+        startTime = startTime.floor(15, 'minutes')
+        endTime   = endTime.ceil(15, 'minutes')
 
       $('#event_start_time').val(startTime.format(format))
       $('#event_end_time').val(endTime.format(format))
