@@ -97,15 +97,15 @@ root.FullCalendar =
 
     set_form_options: (options) ->
       format    = options['datetimeFormat'] || 'DD/MM/YYYY HH:mm'
-      startTime = options['start_time']     || moment()
-      endTime   = options['end_time']       || moment()
+      startTime = options['start_time']     || $.fullCalendar.moment()
+      endTime   = options['end_time']       || $.fullCalendar.moment()
       allDay    = options['allDay']         || false
       min_time  = options['min_time']       || '09:00:00'
       max_time  = options['max_time']       || '18:00:00'
 
       if allDay == true
-        startTime = moment(startTime.format('YYYY-MM-DD') + 'T' + min_time)
-        endTime   = moment(startTime.format('YYYY-MM-DD') + 'T' + max_time)
+        startTime = $.fullCalendar.moment(startTime.format('YYYY-MM-DD') + 'T' + min_time)
+        endTime   = $.fullCalendar.moment(startTime.format('YYYY-MM-DD') + 'T' + max_time)
       else
         startTime = startTime.floor(15, 'minutes')
         endTime   = endTime.ceil(15, 'minutes')
