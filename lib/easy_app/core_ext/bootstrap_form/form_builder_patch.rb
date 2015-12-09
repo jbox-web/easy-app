@@ -66,17 +66,12 @@ module EasyAPP
           end
 
 
-          def datetime_picker(method, opts = {})
-            icon   = opts.delete(:icon) { 'fa-calendar' }
-            lang   = opts.delete(:lang) { I18.default_locale }
-            step   = opts.delete(:step) { 15 }
-            format = opts.delete(:format) { 'd/m/Y H:i' }
-
-            js_options  = { lang: lang, step: step, format: format }
+          def datetime_picker(method, opts = {}, dt_opts = {})
+            icon        = opts.delete(:icon) { 'fa-calendar' }
+            js_options  = get_datetimepicker_options(method, dt_opts)
             btn_options = { onclick: "$('##{id_for(method)}').datetimepicker('show');" }
             input_opts  = { class: 'datetimepicker', append: @template.button_with_icon(icon, btn_options) }.merge(opts)
-
-            text_field(method, input_opts) + @template.javascript_tag("$('##{id_for(method)}').datetimepicker(#{js_options.to_json});")
+            text_field(method, input_opts) + @template.javascript_tag("$('##{id_for(method)}').datetimepicker(#{js_options});")
           end
 
 
@@ -95,6 +90,32 @@ module EasyAPP
 
             def generate_icon(icon)
               content_tag(:span, "", class: "fa fa-#{icon} form-control-feedback")
+            end
+
+
+            def get_datetimepicker_options(method, opts = {})
+              lang    = opts.delete(:lang) { I18.default_locale }
+              step    = opts.delete(:step) { 15 }
+              format  = opts.delete(:format) { 'd/m/Y H:i' }
+              bind_to = opts.delete(:bind_to) { nil }
+              bind_on = opts.delete(:bind_on) { 'maxDate' }
+
+              js_options = { lang: lang, step: step, format: format }.merge(opts)
+
+              if bind_to
+                on_show    = js_on_show_for(bind_to, bind_on)
+                js_options = js_options.merge({ onShow: on_show })
+              end
+
+              js_options = js_options.to_json
+              js_options = js_options.gsub(on_show.quote, on_show.unquote) if bind_to
+              js_options = js_options.gsub('onShow'.quote, 'onShow'.unquote) if bind_to
+              js_options
+            end
+
+
+            def js_on_show_for(element, attribute)
+              "function(ct){ this.setOptions({ #{attribute}: $('#{element}').val() ? $('#{element}').val() : false }) }"
             end
 
         end
