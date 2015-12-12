@@ -26,14 +26,15 @@ root.FullCalendar =
         FullCalendar.Events.resize(event, delta, revertFunc)
 
       eventClick: (event, jsEvent, view) ->
-        FullCalendar.Events.show(event)
+        FullCalendar.Events.show(event, view)
 
       select: (start, end, jsEvent, view) ->
-        FullCalendar.Form.display
-          start_time:  start
-          end_time:    end
-          allDay:      !start.hasTime() && !end.hasTime()
-          newEventUrl: view.options.newEventUrl
+        if view.options.editable
+          FullCalendar.Form.display
+            start_time:  start
+            end_time:    end
+            allDay:      !start.hasTime() && !end.hasTime()
+            newEventUrl: view.options.newEventUrl
     options
 
   Events:
@@ -65,8 +66,11 @@ root.FullCalendar =
       data = FullCalendar.Events.prepare_data(event, delta)
       FullCalendar.Events.send_request(url, data, revertFunc)
 
-    show: (event) ->
-      url = event.path + '/edit'
+    show: (event, view) ->
+      if view.options.editable
+        url = event.path + '/edit'
+      else
+        url = event.path
       $.get url, (data) ->
         $('#modal-holder').html(data).find('.modal').modal()
 
