@@ -35,6 +35,8 @@ module EasyAPP
   require 'easy_app/redcarpet_filter'
   require 'easy_app/markdown_renderer'
 
+  require 'easy_app/utils/crypto'
+
   require 'easy_app/core_ext/bootstrap_form/instance_tag'
   require 'easy_app/core_ext/bootstrap_form/form_builder_patch'
   require 'easy_app/core_ext/date_validator/date_validator_patch'
