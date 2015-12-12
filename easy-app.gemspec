@@ -49,6 +49,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'haml-rails'
 
   # Forms
+  s.add_dependency 'nested_form'
   s.add_dependency 'bootstrap_form'
 
   # Forms switches for checkboxes
