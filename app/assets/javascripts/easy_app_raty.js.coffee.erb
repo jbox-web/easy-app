@@ -1,0 +1,15 @@
+root = exports ? this
+
+root.formatRatyField = (state) ->
+  return state.text if !state.id || state.element.value == '-1'
+  return startContainer(state.element.value, 5)
+
+starOnImage = ->
+  '<%= image_tag("star-on.png") %>'
+
+starOffImage = ->
+  '<%= image_tag("star-off.png") %>'
+
+startContainer = (stars, max) ->
+  $('<span>' + (starOnImage() for num in [0...stars]).join(' ') + ' ' + (starOffImage() for num in [0...(max-stars)]).join(' ') + '</span>')
+
