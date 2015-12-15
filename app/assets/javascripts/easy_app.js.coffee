@@ -42,7 +42,11 @@ root.Date.prototype.dateFormat = (format) ->
 beforeChange = ->
   ZeroClipboard.destroy()
 
-$(document).on('ready page:load', contextMenuUnselectAll)
+onLoad = ->
+  setAlertDismiss()
+  contextMenuUnselectAll()
+
+$(document).on('ready page:load', onLoad)
 $(document).on('click', contextMenuClick)
 $(document).on('contextmenu', contextMenuRightClick)
 $(document).on('page:before-change', beforeChange)

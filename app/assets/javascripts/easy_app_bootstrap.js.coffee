@@ -13,6 +13,7 @@ root.openModalBox = (event, element) ->
       $('.modal-dialog').addClass('modal-' + size)
   return false
 
+
 root.createBootstrapSwitch = (element) ->
   callback = $(element).data('switch-callback')
   if callback
@@ -67,3 +68,7 @@ root.setZeroClipBoard = (element) ->
 
     client.on 'beforecopy', -> $('#global-zeroclipboard-html-bridge').tooltip('show')
     client.on 'aftercopy',  -> $('.tooltip .tooltip-inner').text($(element).data('label-copied'))
+
+
+root.setAlertDismiss = ->
+  $('.alert:not(.dont-dismiss)').delay(3000).slideUp(200, -> $(this).alert('close'))
