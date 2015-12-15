@@ -32,7 +32,7 @@ module EasyAPP
         navigation.highlight_on_subpath = true
       end
 
-      Rack::MiniProfiler.config.start_hidden = true
+      Rack::MiniProfiler.config.start_hidden = true if defined?(Rack::MiniProfiler)
     end
   end
 end

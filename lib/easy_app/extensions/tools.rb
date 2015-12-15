@@ -4,7 +4,9 @@ module EasyAPP
       extend ActiveSupport::Concern
 
       included do
-        before_action :set_mini_profiler
+        if defined?(Rack::MiniProfiler)
+          before_action :set_mini_profiler
+        end
       end
 
 
