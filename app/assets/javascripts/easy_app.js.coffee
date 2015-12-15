@@ -27,6 +27,7 @@
 #= require fullcalendar
 #= require fullcalendar/lang-all
 #= require smart_listing
+#= require zeroclipboard
 #= require_tree .
 
 root = exports ? this
@@ -38,6 +39,10 @@ root.Date.parseDate = (input, format) ->
 root.Date.prototype.dateFormat = (format) ->
   $.fullCalendar.moment(this).format(format)
 
+beforeChange = ->
+  ZeroClipboard.destroy()
+
 $(document).on('ready page:load', contextMenuUnselectAll)
 $(document).on('click', contextMenuClick)
 $(document).on('contextmenu', contextMenuRightClick)
+$(document).on('page:before-change', beforeChange)

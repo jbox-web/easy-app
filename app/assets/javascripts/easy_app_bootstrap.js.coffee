@@ -68,3 +68,16 @@ starOffImage = ->
 
 startContainer = (stars, max) ->
   $('<span>' + (starOnImage() for num in [0...stars]).join(' ') + ' ' + (starOffImage() for num in [0...(max-stars)]).join(' ') + '</span>')
+
+
+root.setZeroClipBoard = (element) ->
+  # Create ZeroClipboard object
+  client = new ZeroClipboard($(element))
+
+  client.on 'ready', ->
+    $('#global-zeroclipboard-html-bridge').tooltip
+      title: $(element).data('label-to-copy')
+      placement: 'right'
+
+    client.on 'beforecopy', -> $('#global-zeroclipboard-html-bridge').tooltip('show')
+    client.on 'aftercopy',  -> $('.tooltip .tooltip-inner').text($(element).data('label-copied'))
