@@ -118,7 +118,7 @@ module EasyAPP
 
 
     def modal_options
-      { remote: true, data: { draggable: true }, onclick: 'openModalBox(this);' }
+      { data: { draggable: true }, onclick: 'openModalBox(event, this);' }
     end
 
   end
