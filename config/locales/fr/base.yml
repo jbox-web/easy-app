@@ -28,6 +28,7 @@ fr:
     administration: Administration
     dashboard: Tableau de bord
     settings: Paramètres
+    infos: Informations
     sidekiq: Sidekiq
     logster: Logster
     save_in_progress: Sauvegarde en cours...
