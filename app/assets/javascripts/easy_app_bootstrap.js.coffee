@@ -1,6 +1,7 @@
 root = exports ? this
 
-root.openModalBox = (element) ->
+root.openModalBox = (event, element) ->
+  event.preventDefault()
   draggable = $(element).data('draggable')
   size      = $(element).data('modal-size')
   $.get $(element).attr('href'), (data) ->
@@ -11,7 +12,6 @@ root.openModalBox = (element) ->
     if size
       $('.modal-dialog').addClass('modal-' + size)
   return false
-
 
 root.createBootstrapSwitch = (element) ->
   callback = $(element).data('switch-callback')
