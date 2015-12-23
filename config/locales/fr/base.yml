@@ -52,6 +52,7 @@ fr:
     uncheck_all: Tout décocher
     refresh: Actualiser
     reset: Réinitialiser
+    restore: Restaurer
 
   helpers:
     select:

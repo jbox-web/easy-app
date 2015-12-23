@@ -38,6 +38,13 @@ module EasyAPP
     end
 
 
+    def link_to_restore(url, link_opts = {}, icon_opts = {})
+      label = link_opts.delete(:label) { t('button.restore') }
+      icon  = icon_opts.delete(:icon) { 'fa-refresh' }
+      link_to_with_options(label, url, icon, link_opts, icon_opts)
+    end
+
+
     def link_to_delete(url, link_opts = {}, icon_opts = {})
       label  = link_opts.delete(:label) { t('button.delete') }
       button = link_opts.fetch(:button, false)
