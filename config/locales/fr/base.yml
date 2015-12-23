@@ -53,6 +53,7 @@ fr:
     refresh: Actualiser
     reset: Réinitialiser
     restore: Restaurer
+    delete_forever: Supprimer définitivement
 
   helpers:
     select:
