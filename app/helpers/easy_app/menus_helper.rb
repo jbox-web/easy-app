@@ -8,13 +8,13 @@ module EasyAPP
     # 3. the bottom menu of the left sidebar
 
 
-    def render_topbar_right_menu
-      render_menu(:topbar_right) if menu_exists?(:topbar_right)
+    def render_topbar_right_menu(context = nil, opts = {})
+      render_menu(:topbar_right, context, opts.reverse_merge(check_klass_presence: true))
     end
 
 
-    def render_topbar_left_menu
-      render_menu(:topbar_left) if menu_exists?(:topbar_left)
+    def render_topbar_left_menu(context = nil, opts = {})
+      render_menu(:topbar_left, context, opts)
     end
 
 
@@ -28,18 +28,18 @@ module EasyAPP
     end
 
 
-    def render_sidebar_menu_top(prefix: nil)
-      render_sidebar_menu(EasyAPP::BaseNavigation.sidebar_menu_top_content, prefix)
+    def render_sidebar_menu_top(context = nil, opts = {})
+      render_sidebar_menu(EasyAPP::BaseNavigation.sidebar_menu_top_content, context, opts)
     end
 
 
-    def render_sidebar_menu_bottom(prefix: nil)
-      render_sidebar_menu(EasyAPP::BaseNavigation.sidebar_menu_bottom_content, prefix)
+    def render_sidebar_menu_bottom(context = nil, opts = {})
+      render_sidebar_menu(EasyAPP::BaseNavigation.sidebar_menu_bottom_content, context, opts)
     end
 
 
-    def render_sidebar_menu(items, prefix)
-      items.map { |m| render_menu(m, prefix: prefix) }.compact.join.html_safe
+    def render_sidebar_menu(items, context, opts = {})
+      items.map { |m| render_menu(m, context, opts) }.compact.join.html_safe
     end
 
 
@@ -68,11 +68,15 @@ module EasyAPP
     end
 
 
-    def render_menu(menu, opts = {})
+    def render_menu(menu, context = nil, opts = {})
       locals = locals_for(:menus)
       locals = locals.call unless locals.nil?
+      check_klass_presence = opts.delete(:check_klass_presence) { false }
+      context_menu = context ? "#{menu}_for_#{context.model_name.to_s.downcase}".to_sym : nil
+      menu = menu_exists?(context_menu) ? context_menu : menu
+      return if !menu_exists?(menu) && !check_klass_presence
       klass  = find_menu(menu)
-      klass.new(self, opts).render(locals)
+      klass.new(self, context, opts).render(locals)
     end
 
 

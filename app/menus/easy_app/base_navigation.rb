@@ -1,13 +1,15 @@
 module EasyAPP
   class BaseNavigation < SimpleDelegator
 
-    attr_reader :prefix
-    attr_reader :opts
+    attr_reader :context
+    attr_reader :options
+    attr_reader :locales
 
 
-    def initialize(view, opts = {})
+    def initialize(view, context, options = {})
       super(view)
-      @prefix = opts.delete(:prefix) { nil }
+      @context = context
+      @options = options
     end
 
 
@@ -48,16 +50,10 @@ module EasyAPP
     end
 
 
-    def render(opts = {})
+    def render(locales = {})
       return unless renderable?
-      @opts = opts
+      @locales = locales
       render_navigation(navmenu_options, &nav_menu)
-    end
-
-
-    def with_prefix(id)
-      return id if prefix.nil?
-      "#{prefix}_#{id}".to_sym
     end
 
 
