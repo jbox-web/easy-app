@@ -25,6 +25,7 @@ module EasyAPP
           def primary(name = nil, options = {})
             # Get icon
             icon = options.delete(:icon) { nil }
+            icon_opts = options.delete(:icon_opts) { {} }
 
             # Get css options
             css_class = options.delete(:class){ nil }
@@ -36,7 +37,7 @@ module EasyAPP
             # Render button
             if icon
               button(options) do
-                @template.label_with_icon(name || submit_default_value, icon)
+                @template.label_with_icon(name || submit_default_value, icon, icon_opts)
               end
             else
               submit(name, options)
@@ -47,6 +48,7 @@ module EasyAPP
           def success(name = nil, options = {})
             # Get icon
             icon = options.delete(:icon) { 'fa-check' }
+            icon_opts = options.delete(:icon_opts) { {} }
 
             # Get css options
             css_class = options.delete(:class){ nil }
@@ -57,7 +59,7 @@ module EasyAPP
 
             # Render button
             button(options) do
-              @template.label_with_icon(name || submit_default_value, icon)
+              @template.label_with_icon(name || submit_default_value, icon, icon_opts)
             end
           end
 
