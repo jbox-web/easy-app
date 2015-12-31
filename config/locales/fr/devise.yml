@@ -38,11 +38,13 @@ fr:
 
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: Instructions pour confirmer son compte
       reset_password_instructions:
-        subject: "Instructions pour changer de mot de passe"
+        subject: Instructions pour changer de mot de passe
       unlock_instructions:
-        subject: "Unlock instructions"
+        subject: Instructions pour déverouiller son compte
+      password_change:
+        subject: Changement de mot de passe
 
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
