@@ -97,7 +97,8 @@ module EasyAPP
 
 
     def get_current_theme
-      "#{User.current.current_theme.capitalize}::Theme".constantize
+      klass = send(EasyAPP.current_user_method).current_theme.capitalize
+      "#{klass}::Theme".constantize
     rescue NameError
       EasyAPP::Theme
     end

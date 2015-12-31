@@ -21,7 +21,7 @@ module EasyAPP
 
 
         def set_page_lang
-          @page_lang = User.current.language
+          @page_lang = send(EasyAPP.current_user_method).language
         end
 
     end
