@@ -22,6 +22,28 @@ module EasyAPP
           end
 
 
+          def primary(name = nil, options = {})
+            # Get icon
+            icon = options.delete(:icon) { nil }
+
+            # Get css options
+            css_class = options.delete(:class){ nil }
+            css_class = button_default_css_class.push(css_class).push('btn-primary').compact
+
+            # Merge options
+            options.reverse_merge! class: css_class
+
+            # Render button
+            if icon
+              button(options) do
+                @template.label_with_icon(name || submit_default_value, icon)
+              end
+            else
+              submit(name, options)
+            end
+          end
+
+
           def success(name = nil, options = {})
             # Get icon
             icon = options.delete(:icon) { 'fa-check' }
