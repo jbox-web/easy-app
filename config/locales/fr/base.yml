@@ -14,6 +14,8 @@ fr:
 
   text:
     are_you_sure: Etes vous sur?
+    yes: Oui
+    no: Non
     or: ou
     by: par
     copy_to_clipboard: Copier dans le presse papier
