@@ -13,9 +13,11 @@ fr:
       en: Anglais
 
   text:
+    "yes": Oui
+    "no": Non
+    "true": Oui
+    "false": Non
     are_you_sure: Etes vous sur?
-    yes: Oui
-    no: Non
     or: ou
     by: par
     copy_to_clipboard: Copier dans le presse papier
