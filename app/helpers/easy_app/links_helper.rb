@@ -102,6 +102,7 @@ module EasyAPP
       button = link_opts.delete(:button) { false }
 
       link_opts = link_opts.merge(modal_options) if modal
+      link_opts = link_opts.merge(title: label) unless link_opts.has_key?(:title)
 
       if button
         css = link_opts.delete(:class){ '' }
