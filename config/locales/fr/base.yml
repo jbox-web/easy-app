@@ -54,6 +54,7 @@ fr:
     reset: Réinitialiser
     restore: Restaurer
     delete_forever: Supprimer définitivement
+    download: Télécharger
 
   helpers:
     select:
