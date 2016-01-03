@@ -7,12 +7,12 @@ module EasyAPP
 
 
     def check_icon(opts = {})
-      icon 'fa-check', { aligned: false, color: '#5cb85c' }.merge(opts)
+      icon 'fa-check', { aligned: false, class: 'fa-success' }.merge(opts)
     end
 
 
     def cross_icon(opts = {})
-      icon 'fa-dot-circle-o', { aligned: false, color: '#a94442' }.merge(opts)
+      icon 'fa-dot-circle-o', { aligned: false, class: 'fa-important' }.merge(opts)
     end
 
 
