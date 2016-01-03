@@ -77,7 +77,7 @@ module EasyAPP
       function = "toggleCheckboxes(this, '#{selector}'); return false;"
       opts = { onchange: function, title: "#{t('button.check_all')}/#{t('button.uncheck_all')}", style: 'display: none;' }
       check_box_tag('select_all', '1', false, opts) +
-      label_tag('select_all', check_icon(class: 'toggle-checkbox', title: "#{t('button.check_all')}/#{t('button.uncheck_all')}"))
+      label_tag('select_all', check_icon(class: 'fa-success toggle-checkbox', title: "#{t('button.check_all')}/#{t('button.uncheck_all')}"))
     end
 
 
