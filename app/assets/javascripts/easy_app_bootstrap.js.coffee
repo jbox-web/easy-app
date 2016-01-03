@@ -33,6 +33,20 @@ root.highlight = (element) ->
   $(element).effect('highlight', { color: '#B0D6D6' }, 1500)
 
 
+root.toggleBooleanIcon = (element) ->
+  icon = $(element)
+  if icon.hasClass('fa-dot-circle-o')
+    icon.removeClass('fa-dot-circle-o')
+    icon.removeClass('fa-important')
+    icon.addClass('fa-check')
+    icon.addClass('fa-success')
+  else
+    icon.removeClass('fa-check')
+    icon.removeClass('fa-success')
+    icon.addClass('fa-dot-circle-o')
+    icon.addClass('fa-important')
+
+
 root.toggleCheckboxes = (element, selector) ->
   all_checked = $(element).is(':checked')
   $(selector).each ->
