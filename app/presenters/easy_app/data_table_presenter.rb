@@ -13,6 +13,7 @@ module EasyAPP
       @source     = nil
       @body_opts  = {}
       @save_state = true
+      @page_length    = 10
       @on_created_row = []
       @on_draw        = []
       @on_responsive_display = []
@@ -109,6 +110,11 @@ module EasyAPP
     end
 
 
+    def page_length(length)
+      @page_length = length
+    end
+
+
     private
 
 
@@ -168,6 +174,7 @@ module EasyAPP
           processing:  true,
           serverSide:  true,
           responsive:  true,
+          pageLength:  #{@page_length},
           stateSave:   #{@save_state},
           buttons:     #{@buttons.to_json},
           dom:         '#{@dom}',
