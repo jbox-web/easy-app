@@ -14,6 +14,7 @@ module EasyAPP
       @body_opts  = {}
       @save_state = true
       @page_length    = 10
+      @paging_type    = 'simple_numbers'
       @on_created_row = []
       @on_draw        = []
       @on_responsive_display = []
@@ -115,6 +116,11 @@ module EasyAPP
     end
 
 
+    def paging_type(type)
+      @paging_type = type
+    end
+
+
     private
 
 
@@ -155,36 +161,44 @@ module EasyAPP
       def datatable_js
         javascript_tag do
         raw("
-          table = $('##{id}').DataTable({#{datatable_options}});
-          yadcf.init(table, #{search_fields}, 'footer');
+          var #{id.underscore} = $('##{id}').DataTable({#{datatable_options}});
+          #{add_on_responsive_display_callback}
+          #{add_yadcf_fields}
+        ")
+        end
+      end
+
+
+      def add_yadcf_fields
+        return '' if @search_fields.empty?
+        raw("
+          yadcf.init(#{id.underscore}, #{search_fields}, 'footer');
           $('.yadcf-filter-wrapper').each(function() {
             $(this).children().wrapAll('<div class=\"col-md-12\"></div>').wrapAll('<div class=\"input-group\"></div>');
             return $(this).children().wrapAll('<div class=\"form-group\"></div>');
           });
           $('.yadcf-filter-reset-button').addClass('btn btn-default').wrap('<span class=\"input-group-btn\"></span>');
           $('.yadcf-filter').addClass('form-control');
-          #{add_on_responsive_display_callback}
         ")
-        end
       end
 
 
       def datatable_options
         raw("
-          processing:  true,
-          serverSide:  true,
-          responsive:  true,
-          pageLength:  #{@page_length},
-          stateSave:   #{@save_state},
-          buttons:     #{@buttons.to_json},
-          dom:         '#{@dom}',
-          order:       #{@order},
-          language:    #{datatables_translations.to_json},
-          ajax:        $('##{id}').data('source'),
-          pagingType:  'full_numbers',
+          processing:   true,
+          serverSide:   true,
+          responsive:   true,
+          pageLength:   #{@page_length},
+          stateSave:    #{@save_state},
+          buttons:      #{@buttons.to_json},
+          dom:          '#{@dom}',
+          order:        #{@order},
+          language:     #{datatables_translations.to_json},
+          ajax:         $('##{id}').data('source'),
+          pagingType:   '#{@paging_type}',
           #{add_on_created_row_callback}
           #{add_on_draw_callback}
-          columns:     #{datatable_columns.to_json}
+          columns:      #{datatable_columns.to_json}
         ")
       end
 
@@ -213,7 +227,7 @@ module EasyAPP
       def add_on_responsive_display_callback
         return '' if @on_responsive_display.empty?
         raw("
-          table.on('responsive-display', function (e, datatable, row, showHide, update) {
+          #{id.underscore}.on('responsive-display', function (e, datatable, row, showHide, update) {
             #{@on_responsive_display.join(' ')}
           });
         ")
