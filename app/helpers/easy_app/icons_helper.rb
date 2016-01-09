@@ -12,7 +12,7 @@ module EasyAPP
 
 
     def cross_icon(opts = {})
-      icon 'fa-cross', { aligned: false, class: 'fa-important' }.merge(opts)
+      icon 'fa-times', { aligned: false, class: 'fa-important' }.merge(opts)
     end
 
 
