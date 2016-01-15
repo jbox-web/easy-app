@@ -125,6 +125,9 @@ Gem::Specification.new do |s|
   # Phone number validation
   s.add_dependency 'phony_rails'
 
+  # Country select
+  s.add_dependency 'country_select'
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
