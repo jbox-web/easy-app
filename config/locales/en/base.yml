@@ -1,0 +1,39 @@
+en:
+
+  prefix:
+    mister: Mr
+    mister_square: Mr²
+    madam: Mrs
+    madam_square: Mrs²
+    mister_and_madam: Mr and Mrs
+
+  language:
+    name:
+      fr: French
+      en: English
+
+  text:
+    "yes": Yes
+    "no": No
+    "true": Yes
+    "false": No
+    are_you_sure: Are you sure?
+    or: or
+    by: by
+    copy_to_clipboard: Copy to clipboard
+    copied: Copied !
+    welcome: Welcome!
+    my_account: My account
+    my_dashboard: My dashboard
+    login: Login
+    logout: Logout
+    signup: Signup
+    help: Help
+    admin: Admin
+    administration: Administration
+    dashboard: Dashboard
+    settings: Settings
+    infos: Informations
+    sidekiq: Sidekiq
+    logster: Logster
+    save_in_progress: Save in progress...
