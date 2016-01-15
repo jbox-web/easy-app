@@ -7,11 +7,13 @@ module EasyAPP
 
         def self.included(base)
           base.send(:prepend, InstanceMethods)
+          base.class_eval do
+            alias_method_chain :country_select, :bootstrap
+          end
         end
 
 
         module InstanceMethods
-
 
           def autocomplete_field(method, source, options = {})
             form_group_builder(method, options) do
@@ -96,6 +98,13 @@ module EasyAPP
             btn_options = { onclick: "$('##{id_for(method)}').datetimepicker('show');" }
             input_opts  = { class: 'datetimepicker', append: @template.button_with_icon(icon, btn_options) }.merge(opts)
             text_field(method, input_opts) + @template.javascript_tag("$('##{id_for(method)}').datetimepicker(#{js_options});")
+          end
+
+
+          def country_select_with_bootstrap(name, options = {}, html_options = {})
+            form_group_builder(name, options, html_options) do
+              content_tag(:div, send(:country_select_without_bootstrap, name, options, html_options), class: control_specific_class('country_select'))
+            end
           end
 
 
