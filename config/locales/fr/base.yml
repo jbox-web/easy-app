@@ -60,6 +60,7 @@ fr:
     restore: Restaurer
     delete_forever: Supprimer définitivement
     download: Télécharger
+    search: Rechercher
 
   helpers:
     select:
