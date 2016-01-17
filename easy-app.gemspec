@@ -128,6 +128,24 @@ Gem::Specification.new do |s|
   # Country select
   s.add_dependency 'country_select'
 
+  # Calculating and converting units of measure
+  s.add_dependency 'measured-rails'
+
+  # Money
+  s.add_dependency 'money-rails'
+
+  # Search forms
+  s.add_dependency 'ransack'
+
+  # Live Rails Logs
+  s.add_dependency 'redis'
+  s.add_dependency 'logster'
+
+  # File upload
+  s.add_dependency 'carrierwave'
+  s.add_dependency 'mini_magick'
+  s.add_dependency 'remotipart'
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
