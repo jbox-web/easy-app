@@ -23,6 +23,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'mysql2'
   s.add_dependency 'pg'
 
+  # Authentication
+  s.add_dependency 'bcrypt'
+  s.add_dependency 'activerecord-session_store'
+
   # Configuration
   s.add_dependency 'settingslogic'
 
