@@ -35,15 +35,15 @@ root.highlight = (element) ->
 
 root.toggleBooleanIcon = (element) ->
   icon = $(element)
-  if icon.hasClass('fa-dot-circle-o')
-    icon.removeClass('fa-dot-circle-o')
+  if icon.hasClass('fa-times')
+    icon.removeClass('fa-times')
     icon.removeClass('fa-important')
     icon.addClass('fa-check')
     icon.addClass('fa-success')
   else
     icon.removeClass('fa-check')
     icon.removeClass('fa-success')
-    icon.addClass('fa-dot-circle-o')
+    icon.addClass('fa-times')
     icon.addClass('fa-important')
 
 
