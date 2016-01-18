@@ -38,7 +38,7 @@ module EasyAPP
 
       def select_field(name, opts = {})
         escape_strings = opts.delete(:escape_strings){ [] }
-        opts = opts.deep_merge(filter_container_id: name, select_type: 'select2', select_type_options: { theme: 'bootstrap' })
+        opts = opts.deep_merge(filter_container_id: name, select_type: 'select2')
         @datatable.escape_strings(escape_strings)
         @datatable.search_field(opts)
         content_tag(:div, '', id: name)
