@@ -29,12 +29,12 @@ module EasyAPP
 
 
     def render_copyright
-      "&copy; #{easy_app_owner_link} #{Date.today.strftime("%Y")}".html_safe
+      "<strong>Copyright</strong> #{easy_app_owner_link} &copy; #{EasyAPP.copyright_start}-#{Date.today.strftime("%Y")}".html_safe
     end
 
 
     def easy_app_owner_link
-      link_to EasyAPP.owner_name, EasyAPP.owner_url
+      link_to EasyAPP.owner_name, EasyAPP.owner_url, target: '_blank'
     end
 
   end

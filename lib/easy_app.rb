@@ -23,6 +23,7 @@ module EasyAPP
   mattr_accessor :app_root
   mattr_accessor :owner_name
   mattr_accessor :owner_url
+  mattr_accessor :copyright_start
   mattr_accessor :current_user_method
 
   require 'easy_app/engine'
