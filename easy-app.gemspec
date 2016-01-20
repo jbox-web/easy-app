@@ -131,6 +131,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'phony_rails'
 
   # Country select
+  s.add_dependency 'countries'
   s.add_dependency 'country_select'
 
   # Calculating and converting units of measure
