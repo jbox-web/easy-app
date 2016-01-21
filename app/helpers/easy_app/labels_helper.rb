@@ -2,7 +2,7 @@ module EasyAPP
   module LabelsHelper
 
     def label_with_tag(message, opts = {})
-      opts[:class] = opts[:class].push('label')
+      opts[:class] = [opts[:class], 'label'].compact.join(' ')
       content_tag(:span, message, opts)
     end
 
