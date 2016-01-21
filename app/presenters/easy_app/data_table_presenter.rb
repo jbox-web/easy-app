@@ -14,6 +14,7 @@ module EasyAPP
       @body_opts  = {}
       @save_state = true
       @page_length    = 10
+      @length_menu    = [[10, 25, 50, 100], [10, 25, 50, 100]]
       @paging_type    = 'simple_numbers'
       @on_created_row = []
       @on_draw        = []
@@ -121,6 +122,11 @@ module EasyAPP
     end
 
 
+    def length_menu(length)
+      @length_menu = length
+    end
+
+
     private
 
 
@@ -189,6 +195,7 @@ module EasyAPP
           serverSide:   true,
           responsive:   true,
           pageLength:   #{@page_length},
+          lengthMenu:   #{@length_menu.to_json},
           stateSave:    #{@save_state},
           buttons:      #{@buttons.to_json},
           dom:          '#{@dom}',
