@@ -1,7 +1,7 @@
 #context-menu {
   font-size: 0.9em;
   position: absolute;
-  z-index: 40;
+  z-index: 100;
 }
 
 #context-menu ul, #context-menu li, #context-menu a {
