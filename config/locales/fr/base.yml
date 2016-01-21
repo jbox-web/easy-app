@@ -38,6 +38,7 @@ fr:
     sidekiq: Sidekiq
     logster: Logster
     save_in_progress: Sauvegarde en cours...
+    homepage: Accueil
 
   button:
     save: Sauvegarder
