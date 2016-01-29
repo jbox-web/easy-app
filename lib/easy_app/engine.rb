@@ -17,6 +17,7 @@ module EasyAPP
     config.before_initialize do
       config.i18n.load_path += Dir[config.root.join('config', 'locales', '**', '*.yml').to_s]
       EasyAPP.current_user_method = :current_user
+      config.assets.precompile += %w(paste.png)
     end
 
     config.after_initialize do
