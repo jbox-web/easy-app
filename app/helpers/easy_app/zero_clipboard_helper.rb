@@ -1,18 +1,17 @@
 module EasyAPP
   module ZeroClipboardHelper
 
-    def zero_clipboard_button_for(target)
-      render_zero_clipboard_button(target) + render_zero_clipboard_javascript(target)
+    def zero_clipboard_button_for(target, opts = {})
+      render_zero_clipboard_button(target, opts) + render_zero_clipboard_javascript(target)
     end
 
 
     private
 
 
-      def render_zero_clipboard_button(target)
-        content_tag(:div, id: "zc_#{target}", style: 'float: left;', data: zero_clipboard_options.merge('clipboard-target' => target)) do
-          image_tag('paste.png')
-        end
+      def render_zero_clipboard_button(target, opts = {})
+        options = zero_clipboard_options(target).merge(opts)
+        content_tag(:div, image_tag('paste.png'), options)
       end
 
 
@@ -21,8 +20,15 @@ module EasyAPP
       end
 
 
-      def zero_clipboard_options
-        { 'label-copied'  => t('text.copied'), 'label-to-copy' => t('text.copy_to_clipboard') }
+      def zero_clipboard_options(target)
+        {
+          'id'   => "zc_#{target}",
+          'data' => {
+            'label-copied'     => t('text.copied'),
+            'label-to-copy'    => t('text.copy_to_clipboard'),
+            'clipboard-target' => target
+          }
+        }
       end
 
   end
