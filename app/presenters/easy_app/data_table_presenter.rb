@@ -13,6 +13,7 @@ module EasyAPP
       @source     = nil
       @body_opts  = {}
       @save_state = true
+      @responsive = true
       @page_length    = 10
       @length_menu    = [[10, 25, 50, 100], [10, 25, 50, 100]]
       @paging_type    = 'simple_numbers'
@@ -127,6 +128,11 @@ module EasyAPP
     end
 
 
+    def responsive(responsive)
+      @responsive = responsive
+    end
+
+
     private
 
 
@@ -193,7 +199,7 @@ module EasyAPP
         raw("
           processing:   true,
           serverSide:   true,
-          responsive:   true,
+          responsive:   #{@responsive.to_json},
           pageLength:   #{@page_length},
           lengthMenu:   #{@length_menu.to_json},
           stateSave:    #{@save_state},
