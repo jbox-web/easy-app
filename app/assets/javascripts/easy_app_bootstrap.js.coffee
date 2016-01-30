@@ -61,16 +61,6 @@ root.setContextualMenuForRow = (row) ->
   $(row).addClass('has-context-menu')
 
 
-root.setBootstrapRowStatus = (row) ->
-  status = $(row).find('td.status').html()
-  if status == '1'
-    $(row).addClass('success')
-  else if status == '2'
-    $(row).addClass('warning')
-  else if status == '3'
-    $(row).addClass('danger')
-
-
 root.setZeroClipBoard = (element) ->
   # Create ZeroClipboard object
   client = new ZeroClipboard($(element))
