@@ -2461,7 +2461,7 @@ var yadcf = (function ($) {
 						if (filter_container_id !== undefined) {
 							columnObj.filter_container_selector = "#" + filter_container_id;
 						}
-						if ($("#yadcf-filter-wrapper-" + columnObj.filter_container_selector).length === 0) {
+						if ($("#yadcf-filter-wrapper--" + filter_container_id).length === 0) {
 							$(columnObj.filter_container_selector).append("<div id=\"yadcf-filter-wrapper-" + generateTableSelectorJQFriendly(columnObj.filter_container_selector) + "\"></div>");
 						}
 						filter_selector_string = "#yadcf-filter-wrapper-" + generateTableSelectorJQFriendly(columnObj.filter_container_selector);
@@ -2728,6 +2728,8 @@ var yadcf = (function ($) {
 		}
 
 		$(event.target).parent().find(".yadcf-filter-range").val("");
+		$(event.target).parent().parent().find(".yadcf-filter-range").val("");
+
 		if ($(event.target).parent().find(".yadcf-filter-range-number").length > 0) {
 			$($(event.target).parent().find(".yadcf-filter-range")[0]).focus();
 		}
