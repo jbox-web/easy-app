@@ -17,6 +17,7 @@
  *= require bootstrap-markdown
  *= require fullcalendar
  *= require jquery.minicolors
+ *= require jquery-ui/datepicker
  *= require_tree .
  */
 

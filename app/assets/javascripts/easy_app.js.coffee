@@ -14,6 +14,8 @@
 #= require jquery.turbolinks
 #= require jquery_ujs
 #= require jquery-ui/autocomplete
+#= require jquery-ui/datepicker
+#= require jquery-ui/datepicker-fr
 #= require jquery-ui/draggable
 #= require jquery-ui/effect
 #= require jquery-ui/effect-highlight
