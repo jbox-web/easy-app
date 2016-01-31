@@ -28,6 +28,13 @@ module EasyAPP
     end
 
 
+    def range_date(name, opts = {})
+      opts = opts.merge(filter_type: 'range_date', filter_container_id: name)
+      @datatable.search_field(opts)
+      content_tag(:div, '', id: name)
+    end
+
+
     def render_datatable
       @datatable.render_datatable
     end
