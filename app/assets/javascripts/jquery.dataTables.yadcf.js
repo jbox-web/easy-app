@@ -59,7 +59,7 @@
 				Description:		When set to true, the value of the data attribute will be fed into the filter as is (without any modification/decoration).
 									Perfect to use when you want to define your own <option></option> for the filter
 				Note:				Currently supported by the select / multi_select filters
-				
+
 * append_data_to_table_data
 				Required:			false
 				Type:				string
@@ -114,7 +114,7 @@
 * filter_container_selector
 				Required:			false
 				Type:				String
-				Description:		In case that user don't want to place the filter in column header , he can pass a (jquery) selector of the desired container for the column filter				
+				Description:		In case that user don't want to place the filter in column header , he can pass a (jquery) selector of the desired container for the column filter
 
 * filter_default_label
 				Required:			false
@@ -1518,10 +1518,9 @@ var yadcf = (function ($) {
 			filterActionStr = '';
 		}
 
-		$(filter_selector_string).append("<input onkeydown=\"yadcf.preventDefaultForEnter(event);\" placeholder=\"" + filter_default_label[0] + "\" id=\"" + fromId + "\" class=\"yadcf-filter-range-date yadcf-filter-range\" " + filterActionStr + "></input>");
-		$(filter_selector_string).append("<span class=\"yadcf-filter-range-date-seperator\" >" +
-			"</span>");
-		$(filter_selector_string).append("<input onkeydown=\"yadcf.preventDefaultForEnter(event);\" placeholder=\"" + filter_default_label[1] + "\" id=\"" + toId + "\" class=\"yadcf-filter-range-date yadcf-filter-range\" " + filterActionStr + "></input>");
+		$(filter_selector_string).append("<input onkeydown=\"yadcf.preventDefaultForEnter(event);\" placeholder=\"" + filter_default_label[0] + "\" id=\"" + fromId + "\" class=\"yadcf-filter-range-date yadcf-filter-range yadcf-filter-range-start\" " + filterActionStr + "></input>");
+		$(filter_selector_string).append("<span class=\"yadcf-filter-range-date-seperator\" >" + "</span>");
+		$(filter_selector_string).append("<input onkeydown=\"yadcf.preventDefaultForEnter(event);\" placeholder=\"" + filter_default_label[1] + "\" id=\"" + toId + "\" class=\"yadcf-filter-range-date yadcf-filter-range yadcf-filter-range-end\" " + filterActionStr + "></input>");
 
 		$fromInput = $("#" + fromId);
 		$toInput = $("#" + toId);
