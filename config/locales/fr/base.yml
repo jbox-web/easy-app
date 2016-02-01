@@ -65,6 +65,7 @@ fr:
     delete_forever: Supprimer définitivement
     download: Télécharger
     search: Rechercher
+    filter: Filtrer
 
   helpers:
     select:
