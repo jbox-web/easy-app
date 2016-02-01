@@ -49,11 +49,15 @@ fr:
     continue: Continuer
     show: Voir
     add: Ajouter
+    add_all: Ajouter tout
+    add_selection: Ajouter la sélection
     create: Créer
     clone: Cloner
     edit: Editer
     update: Modifier
     delete: Supprimer
+    delete_all: Supprimer tout
+    delete_selection: Supprimer la sélection
     signup: S'inscrire
     send: Envoyer !
     send_mail: Envoyer un mail
