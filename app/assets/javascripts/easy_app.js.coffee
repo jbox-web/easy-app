@@ -11,7 +11,6 @@
 # about supported directives.
 #
 #= require jquery
-#= require jquery.turbolinks
 #= require jquery_ujs
 #= require jquery-ui/autocomplete
 #= require jquery-ui/datepicker
@@ -33,14 +32,10 @@
 #= require zeroclipboard
 #= require_tree .
 
-beforeChange = ->
-  ZeroClipboard.destroy()
-
 onLoad = ->
   setAlertDismiss()
   contextMenuUnselectAll()
 
-$(document).on('ready page:load', onLoad)
+$(document).on('ready', onLoad)
 $(document).on('click', contextMenuClick)
 $(document).on('contextmenu', contextMenuRightClick)
-$(document).on('page:before-change', beforeChange)
