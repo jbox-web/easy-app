@@ -42,6 +42,11 @@ module EasyAPP
     end
 
 
+    def render_js_datatable
+      @datatable.render_js_datatable
+    end
+
+
     private
 
 
