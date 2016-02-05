@@ -66,11 +66,11 @@ module EasyAPP
     end
 
 
-    def link_to_modal(url, link_opts = {}, icon_opts = {})
+    def link_to_modal(url, link_opts = {}, icon_opts = {}, &block)
       label = link_opts.delete(:label) { false }
       icon  = icon_opts.delete(:icon) { false }
       link_opts = link_opts.merge(modal: true)
-      link_to_with_options(label, url, icon, link_opts, icon_opts)
+      link_to_with_options(label, url, icon, link_opts, icon_opts, &block)
     end
 
 
