@@ -57,10 +57,6 @@ root.toggleCheckboxes = (element, selector) ->
       $(this).parent().parent().removeClass('selected')
 
 
-root.setContextualMenuForRow = (row) ->
-  $(row).addClass('has-context-menu')
-
-
 root.setZeroClipBoard = (element) ->
   # Create ZeroClipboard object
   client = new ZeroClipboard($(element))

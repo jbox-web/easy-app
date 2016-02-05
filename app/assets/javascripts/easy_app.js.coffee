@@ -34,8 +34,5 @@
 
 onLoad = ->
   setAlertDismiss()
-  contextMenuUnselectAll()
 
 $(document).on('ready', onLoad)
-$(document).on('click', contextMenuClick)
-$(document).on('contextmenu', contextMenuRightClick)

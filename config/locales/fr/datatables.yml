@@ -28,6 +28,7 @@ fr:
       csv: Exporter au format CSV
       excel: Exporter au format Excel
       print: Imprimer
+      email: Envoyer un email
       display_columns: Sélectionnez les colonnes à afficher
       display_n_items: Sélectionnez le nombre d'entrées à afficher
       pageLength:
