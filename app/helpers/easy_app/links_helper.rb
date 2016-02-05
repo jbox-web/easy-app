@@ -98,11 +98,11 @@ module EasyAPP
     end
 
 
-    def link_to_with_options(label, url, icon_name, link_opts = {}, icon_opts = {})
+    def link_to_with_options(label, url, icon_name, link_opts = {}, icon_opts = {}, &block)
       modal  = link_opts.delete(:modal) { false }
       button = link_opts.delete(:button) { false }
 
-      link_opts = link_opts.merge(modal_options) if modal
+      link_opts = modal_options.deep_merge(link_opts) if modal
       link_opts = link_opts.merge(title: label) unless link_opts.has_key?(:title)
 
       if button
@@ -119,7 +119,11 @@ module EasyAPP
         link_name = icon(icon_name, icon_opts)
       end
 
-      link_to link_name, url, link_opts
+      if block_given?
+        link_to url, link_opts, &block
+      else
+        link_to link_name, url, link_opts
+      end
     end
 
 
