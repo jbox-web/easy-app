@@ -70,6 +70,7 @@ fr:
     download: Télécharger
     search: Rechercher
     filter: Filtrer
+    preview: Prévisualiser
 
   helpers:
     select:
