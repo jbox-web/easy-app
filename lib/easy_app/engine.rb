@@ -24,8 +24,12 @@ module EasyAPP
       Haml::Template.options[:attr_wrapper] = '"'
 
       Crummy.configure do |config|
+        if config.respond_to?(:ul_class)
+          config.ul_class = 'breadcrumb'
+        else
+          config.ol_class = 'breadcrumb'
+        end
         config.format            = :html_list
-        config.ul_class          = 'breadcrumb'
         config.last_crumb_linked = false
       end
 
