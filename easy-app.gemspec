@@ -155,6 +155,11 @@ Gem::Specification.new do |s|
   # Favicons
   s.add_dependency 'favicon_maker'
 
+  # PDF Generation
+  s.add_dependency 'prawn'
+  s.add_dependency 'prawn-table'
+  s.add_dependency 'prawn_rails'
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
