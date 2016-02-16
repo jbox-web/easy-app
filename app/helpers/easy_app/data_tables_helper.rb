@@ -21,6 +21,10 @@ module EasyAPP
       data[:aria] = {}
       data[:aria][:sortAscending]  = t('datatables.aria.sortAscending')
       data[:aria][:sortDescending] = t('datatables.aria.sortDescending')
+      data[:select] = {}
+      data[:select][:rows]    = t('datatables.select.rows')
+      # data[:select][:cells]   = t('datatables.select.cells')
+      # data[:select][:columns] = t('datatables.select.columns')
       data[:buttons] = {}
       data[:buttons][:pageLength] = {}
       data[:buttons][:pageLength][:_]    = t('datatables.buttons.pageLength._')

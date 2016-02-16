@@ -22,6 +22,11 @@ fr:
       sortAscending:  ': activer pour trier la colonne par ordre croissant'
       sortDescending: ': activer pour trier la colonne par ordre décroissant'
 
+    select:
+      rows: "%d lignes sélectionnée(s)"
+      cells: "%d cellules sélectionnée(s)"
+      columns: "%d colonnes sélectionnée(s)"
+
     buttons:
       copy: Copier dans le presse-papier
       pdf: Exporter au format PDF
