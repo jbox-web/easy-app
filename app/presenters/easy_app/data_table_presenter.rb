@@ -120,7 +120,7 @@ module EasyAPP
         {
           processing:   true,
           server_side:  true,
-          save_state:   true,
+          state_save:   true,
           responsive:   true,
           page_length:  10,
           length_menu:  [[10, 25, 50, 100], [10, 25, 50, 100]],
