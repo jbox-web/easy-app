@@ -163,6 +163,9 @@ Gem::Specification.new do |s|
   # Locales
   s.add_dependency 'rails-i18n'
 
+  # Autoincrement fields
+  s.add_dependency 'auto_increment'
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
