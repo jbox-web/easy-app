@@ -166,6 +166,10 @@ Gem::Specification.new do |s|
   # Autoincrement fields
   s.add_dependency 'auto_increment'
 
+  # Charts
+  s.add_dependency 'chartkick'
+  s.add_dependency 'groupdate'
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }

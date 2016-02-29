@@ -28,8 +28,19 @@
 #= require moment
 #= require fullcalendar
 #= require fullcalendar/lang-all
+#= require fullcalendar/events
 #= require smart_listing
 #= require zeroclipboard
+#= require chartkick/0-highcharts
+#= require chartkick/1-highcharts-map
+#= require chartkick/2-chartkick
+#= require datatable/datatables
+#= require datatable/datatables_helper
+#= require datatable/jquery.dataTables.yadcf
+#= require datetimepicker/easy_app_datetimepicker_patch
+#= require datetimepicker/easy_app_moment-round
+#= require datetimepicker/jquery.datetimepicker
+#= require select2/select2.full
 #= require_tree .
 
 onLoad = ->

@@ -38,6 +38,8 @@ module EasyAPP
         navigation.highlight_on_subpath = true
       end
 
+      Chartkick.options[:content_for] = :charts_js
+
       Rack::MiniProfiler.config.start_hidden = true if defined?(Rack::MiniProfiler)
     end
   end
