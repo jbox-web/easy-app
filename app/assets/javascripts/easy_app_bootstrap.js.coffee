@@ -72,3 +72,18 @@ root.setZeroClipBoard = (element) ->
 
 root.setAlertDismiss = ->
   $('.alert:not(.dont-dismiss)').delay(3000).slideUp(200, -> $(this).alert('close'))
+
+
+root.setCurrentTab = ->
+  # show active tab on reload
+  if (location.hash != '')
+    current_tab = $('a[data-target="' + location.hash + '"]')
+    $.ajax({url: current_tab.attr('href'), dataType: 'script'}) if (current_tab.data('remote') == true)
+    current_tab.tab('show')
+
+  # remember the hash in the URL without jumping
+  $('a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
+    if(history.pushState)
+      history.pushState(null, null, '#' + $(e.target).data('target').substr(1))
+    else
+      location.hash = '#' + $(e.target).data('target').substr(1)
