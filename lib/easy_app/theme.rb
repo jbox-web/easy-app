@@ -12,6 +12,11 @@ module EasyAPP
     end
 
 
+    def site_fonts=(fonts)
+      @fonts = fonts
+    end
+
+
     def icon_pack
       @icon_pack ||= EasyAPP::Themes::FontAwesome
     end
@@ -19,11 +24,6 @@ module EasyAPP
 
     def css_framework
       @css_framework ||= EasyAPP::Themes::Bootstrap
-    end
-
-
-    def site_fonts=(fonts)
-      @fonts = fonts
     end
 
 
