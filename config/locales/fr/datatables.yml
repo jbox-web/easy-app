@@ -35,6 +35,7 @@ fr:
       print: Imprimer
       email: Envoyer un email
       reset_selection: Réinitialiser la sélection
+      reset_filters: Réinitialiser tous les filtres
       display_columns: Sélectionnez les colonnes à afficher
       display_n_items: Sélectionnez le nombre d'entrées à afficher
       pageLength:

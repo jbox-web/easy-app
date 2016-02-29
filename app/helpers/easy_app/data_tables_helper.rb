@@ -39,5 +39,25 @@ module EasyAPP
       datatable
     end
 
+
+    def datatable_button_for(button)
+      case button
+      when 'email'
+        { action: 'email',           text: icon('fa-envelope-o',     aligned: false), titleAttr: t('datatables.buttons.email') }
+      when 'reset_selection'
+        { action: 'reset_selection', text: icon('fa-check-square-o', aligned: false), titleAttr: t('datatables.buttons.reset_selection'), method: 'post' }
+      when 'reset_filters'
+        { action: 'reset_filters',   text: icon('fa-refresh',        aligned: false), titleAttr: t('datatables.buttons.reset_filters') }
+      when 'csv'
+        { extend: 'csv',   text: icon('fa-file-text-o',  aligned: false), titleAttr: t('datatables.buttons.csv') }
+      when 'excel'
+        { extend: 'excel', text: icon('fa-file-excel-o', aligned: false), titleAttr: t('datatables.buttons.excel') }
+      when 'pdf'
+        { extend: 'pdf',   text: icon('fa-file-pdf-o',   aligned: false), titleAttr: t('datatables.buttons.pdf') }
+      when 'print'
+        { extend: 'print', text: icon('fa-print',        aligned: false), titleAttr: t('datatables.buttons.print') }
+      end
+    end
+
   end
 end
