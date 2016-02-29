@@ -170,6 +170,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'chartkick'
   s.add_dependency 'groupdate'
 
+  # Users settings
+  s.add_dependency 'ledermann-rails-settings'
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
