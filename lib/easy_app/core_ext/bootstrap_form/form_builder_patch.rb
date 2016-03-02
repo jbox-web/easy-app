@@ -67,7 +67,11 @@ module EasyAPP
 
 
           def cancel(url, options = {})
-            @template.link_to I18n.t('button.cancel'), url, class: button_default_css_class
+            # Get css options
+            css_class = options.delete(:class){ nil }
+            css_class = button_default_css_class.push(css_class).push('btn-default').compact
+
+            @template.link_to I18n.t('button.cancel'), url, class: css_class
           end
 
 
@@ -117,7 +121,7 @@ module EasyAPP
 
 
             def button_default_css_class
-              ['btn', 'btn-default']
+              ['btn']
             end
 
 
