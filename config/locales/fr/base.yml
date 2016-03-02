@@ -44,6 +44,7 @@ fr:
 
   button:
     save: Sauvegarder
+    record: Enregistrer
     back: Revenir
     cancel: Annuler
     continue: Continuer
