@@ -59,6 +59,13 @@ module EasyAPP
     end
 
 
+    def link_to_send(url, link_opts = {}, icon_opts = {})
+      label = link_opts.delete(:label) { t('button.send') }
+      icon  = icon_opts.delete(:icon) { 'fa-send' }
+      link_to_with_options(label, url, icon, link_opts, icon_opts)
+    end
+
+
     def link_to_download(url, link_opts = {}, icon_opts = {})
       label = link_opts.delete(:label) { t('button.download') }
       icon  = icon_opts.delete(:icon) { 'fa-download' }
