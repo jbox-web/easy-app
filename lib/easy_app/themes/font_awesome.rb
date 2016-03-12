@@ -11,6 +11,7 @@ module EasyAPP
           .merge(archive_icons_mapping)
           .merge(document_icons_mapping)
           .merge(prefix_icons_mapping)
+          .merge(direction_icons_mapping)
       end
 
 
@@ -67,6 +68,16 @@ module EasyAPP
           'application/vnd.oasis.opendocument.spreadsheet'                           => 'fa-file-excel-o',
           'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'        => 'fa-file-excel-o',
           'application/vnd.ms-excel'                                                 => 'fa-file-excel-o'
+        }
+      end
+
+
+      def direction_icons_mapping
+        {
+          top:    'fa-angle-double-up',
+          up:     'fa-angle-up',
+          down:   'fa-angle-down',
+          bottom: 'fa-angle-double-down'
         }
       end
 

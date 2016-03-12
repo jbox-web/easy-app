@@ -22,6 +22,11 @@ module EasyAPP
     end
 
 
+    def direction_icon(direction)
+      icon icon_name_for(direction)
+    end
+
+
     def icon_name_for(content_type)
       EasyAPP::Theme.icon_name_for(content_type) || 'fa-file'
     end
