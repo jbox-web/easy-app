@@ -41,6 +41,11 @@ fr:
     logster: Logster
     save_in_progress: Sauvegarde en cours...
     homepage: Accueil
+    direction:
+      top: Déplacer tout en haut
+      up: Monter d'un cran
+      down: Descendre d'un cran
+      bottom: Déplacer tout en bas
 
   button:
     save: Sauvegarder

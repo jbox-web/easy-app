@@ -23,7 +23,7 @@ module EasyAPP
 
 
     def direction_icon(direction)
-      icon icon_name_for(direction)
+      icon icon_name_for(direction), title: t("text.direction.#{direction}")
     end
 
 
