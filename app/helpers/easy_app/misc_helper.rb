@@ -22,6 +22,11 @@ module EasyAPP
     end
 
 
+    def footer_separator
+      "\n--\n".html_safe
+    end
+
+
     def join_content(*args)
       args.join("\n").html_safe
     end
