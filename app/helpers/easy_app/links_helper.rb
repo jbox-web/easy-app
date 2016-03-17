@@ -121,6 +121,7 @@ module EasyAPP
     def link_to_with_options(label, url, icon_name, link_opts = {}, icon_opts = {}, &block)
       modal  = link_opts.delete(:modal) { false }
       button = link_opts.delete(:button) { false }
+      tag    = link_opts.delete(:tag) { false }
 
       link_opts = modal_options.deep_merge(link_opts) if modal
       link_opts = link_opts.merge(title: label) unless link_opts.has_key?(:title)
@@ -138,6 +139,8 @@ module EasyAPP
       elsif icon_name && !label
         link_name = icon(icon_name, icon_opts)
       end
+
+      link_name = tag ? send("label_with_#{tag}_tag", link_name) : link_name
 
       if block_given?
         link_to url, link_opts, &block
