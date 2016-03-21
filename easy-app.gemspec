@@ -179,6 +179,9 @@ Gem::Specification.new do |s|
   # CSV Import
   s.add_dependency 'roo'
 
+  # String conversion
+  s.add_dependency 'iconv'
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
