@@ -38,8 +38,13 @@ module EasyAPP
     end
 
 
-    def render_sidebar_menu(items, context, opts = {})
-      items.map { |m| render_menu(m, context, opts) }.compact.join.html_safe
+    def locals_for(menu, &block)
+      @locals_for ||= {}
+      if block_given?
+        @locals_for[menu] = block
+      else
+        @locals_for[menu]
+      end
     end
 
 
@@ -53,56 +58,54 @@ module EasyAPP
     end
 
 
-    def render_page_within_layout(partial, opts = {})
-      content_tag(:div, render(partial), opts)
-    end
+    private
 
 
-    def locals_for(menu, &block)
-      @locals_for ||= {}
-      if block_given?
-        @locals_for[menu] = block
-      else
-        @locals_for[menu]
+      def render_sidebar_menu(items, context, opts = {})
+        items.map { |m| render_menu(m, context, opts) }.compact.join.html_safe
       end
-    end
 
 
-    def render_menu(menu, context = nil, opts = {})
-      locals = locals_for(:menus)
-      locals = locals.call unless locals.nil?
-      check_klass_presence = opts.delete(:check_klass_presence) { false }
-      context_menu = context ? "#{menu}_for_#{context.model_name.to_s.downcase}".to_sym : nil
-      menu = menu_exists?(context_menu) ? context_menu : menu
-      return if !menu_exists?(menu) && !check_klass_presence
-      klass  = find_menu(menu)
-      klass.new(self, context, opts).render(locals)
-    end
+      def render_page_within_layout(partial, opts = {})
+        content_tag(:div, render(partial), opts)
+      end
 
 
-    def find_menu(menu)
-      begin
-        klass = constantize_menu(menu)
+      def render_menu(menu, context = nil, opts = {})
+        locals = locals_for(:menus)
+        locals = locals.call unless locals.nil?
+        check_klass_presence = opts.delete(:check_klass_presence) { false }
+        context_menu = context ? "#{menu}_for_#{context.model_name.to_s.downcase}".to_sym : nil
+        menu = menu_exists?(context_menu) ? context_menu : menu
+        return if !menu_exists?(menu) && !check_klass_presence
+        klass  = find_menu(menu)
+        klass.new(self, context, opts).render(locals)
+      end
+
+
+      def find_menu(menu)
+        begin
+          klass = constantize_menu(menu)
+        rescue NameError
+          raise EasyAPP::Error::MenuNotFound, "MenuNotFound: #{menu}_navigation"
+        else
+          klass
+        end
+      end
+
+
+      def menu_exists?(menu)
+        constantize_menu(menu)
+        true
       rescue NameError
-        raise EasyAPP::Error::MenuNotFound, "MenuNotFound: #{menu}_navigation"
-      else
-        klass
+        false
       end
-    end
 
 
-    def menu_exists?(menu)
-      constantize_menu(menu)
-      true
-    rescue NameError
-      false
-    end
-
-
-    def constantize_menu(menu)
-      klass_name = "#{menu}_navigation"
-      klass_name.camelize.constantize
-    end
+      def constantize_menu(menu)
+        klass_name = "#{menu}_navigation"
+        klass_name.camelize.constantize
+      end
 
   end
 end
