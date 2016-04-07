@@ -22,6 +22,8 @@ fr:
     and: et
     by: par
     all: Tout
+    of: de
+    ofa: d'
     error: Erreur
     copy_to_clipboard: Copier dans le presse papier
     copied: Copié !
