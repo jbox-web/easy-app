@@ -32,8 +32,8 @@ module EasyAPP
     end
 
 
-    def icon_for(content_type)
-      icon(icon_name_for(content_type))
+    def icon_for(content_type, opts = {})
+      icon(icon_name_for(content_type), opts)
     end
 
 
