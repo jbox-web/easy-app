@@ -12,6 +12,7 @@ Gem.loaded_specs['easy-app'].dependencies.each do |d|
       require d.name.gsub('-', '/')
     rescue Exception => e
       puts d.name
+      puts e.message
     end
   end
 end
