@@ -188,6 +188,9 @@ Gem::Specification.new do |s|
   # Store base STI class in DB instead of parent class
   s.add_dependency 'store_base_sti_class'
 
+  # Generate Excel spreadsheets from any subclass of ActiveRecord::Base
+  s.add_dependency 'acts_as_xlsx'
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
