@@ -67,7 +67,8 @@ module EasyAPP
           'application/msword'                                                       => 'fa-file-word-o',
           'application/vnd.oasis.opendocument.spreadsheet'                           => 'fa-file-excel-o',
           'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'        => 'fa-file-excel-o',
-          'application/vnd.ms-excel'                                                 => 'fa-file-excel-o'
+          'application/vnd.ms-excel'                                                 => 'fa-file-excel-o',
+          'text/comma-separated-values'                                              => 'fa-file-text-o'
         }
       end
 
