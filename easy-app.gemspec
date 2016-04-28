@@ -189,6 +189,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'store_base_sti_class'
 
   # Generate Excel spreadsheets from any subclass of ActiveRecord::Base
+  s.add_dependency 'zip-zip'
   s.add_dependency 'acts_as_xlsx'
 
   s.files         = `git ls-files`.split("\n")
