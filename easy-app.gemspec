@@ -28,7 +28,10 @@ Gem::Specification.new do |s|
 
   # Sessions
   s.add_dependency 'activerecord-session_store'
+  s.add_dependency 'redis'
+  s.add_dependency 'redis-namespace'
   s.add_dependency 'redis-rails'
+  s.add_dependency 'redis-rack-cache'
 
   # Configuration
   s.add_dependency 'settingslogic'
@@ -147,7 +150,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'ransack'
 
   # Live Rails Logs
-  s.add_dependency 'redis'
   s.add_dependency 'logster'
 
   # File upload
