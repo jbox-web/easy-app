@@ -26,10 +26,14 @@ Gem::Specification.new do |s|
   # Authentication Crypto
   s.add_dependency 'bcrypt'
 
-  # Sessions
-  s.add_dependency 'activerecord-session_store'
+  # Redis
   s.add_dependency 'redis'
+  s.add_dependency 'hiredis'
+  s.add_dependency 'em-synchrony'
   s.add_dependency 'redis-namespace'
+
+  # Sessions and Cache
+  s.add_dependency 'activerecord-session_store'
   s.add_dependency 'redis-rails'
   s.add_dependency 'redis-rack-cache'
 
