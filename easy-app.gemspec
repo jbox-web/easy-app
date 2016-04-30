@@ -140,6 +140,9 @@ Gem::Specification.new do |s|
   # Phone number validation
   s.add_dependency 'phony_rails'
 
+  # Timezone
+  s.add_dependency 'tzinfo'
+
   # Country select
   s.add_dependency 'countries'
   s.add_dependency 'country_select'
