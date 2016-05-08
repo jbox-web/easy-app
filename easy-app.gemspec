@@ -190,6 +190,7 @@ Gem::Specification.new do |s|
 
   # CSV Import
   s.add_dependency 'roo'
+  s.add_dependency 'smarter_csv'
 
   # String conversion
   s.add_dependency 'iconv'
