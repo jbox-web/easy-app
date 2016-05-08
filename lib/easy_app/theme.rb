@@ -85,6 +85,11 @@ module EasyAPP
     end
 
 
+    def notify_class_for(type)
+      css_framework.notify_mapping[type.to_sym]
+    end
+
+
     def flash_default_css
       css_framework.alert_default_class.clone
     end
