@@ -205,9 +205,6 @@ Gem::Specification.new do |s|
   # Pretty print Rails console
   s.add_dependency 'awesome_print'
 
-  # Maintenance page
-  s.add_dependency 'turnout'
-
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
