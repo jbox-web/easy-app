@@ -137,7 +137,7 @@ module EasyAPP
       def datatable_columns
         data = []
         @columns.each_with_index do |c, i|
-          data << { data: i, className: c.css_class, visible: c.visible?, orderable: c.sortable?, searchable: c.searchable? }
+          data << c.to_hash.merge(data: i)
         end
         data
       end

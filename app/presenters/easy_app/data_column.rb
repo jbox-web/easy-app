@@ -13,6 +13,11 @@ module EasyAPP
     end
 
 
+    def to_hash
+      { className: css_class, visible: visible?, orderable: sortable?, searchable: searchable?, width: width }
+    end
+
+
     def sortable?
       @opts.fetch(:sortable, true)
     end
@@ -29,7 +34,12 @@ module EasyAPP
 
 
     def css_class
-      @opts[:class] || ''
+      @opts.fetch(:class, '')
+    end
+
+
+    def width
+      @opts.fetch(:width, '')
     end
 
   end
