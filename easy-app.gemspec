@@ -75,7 +75,7 @@ Gem::Specification.new do |s|
 
   # Menus
   s.add_dependency 'simple-navigation'
-  s.add_dependency 'simple_navigation_renderers'
+  s.add_dependency 'simple_navigation_bootstrap'
   s.add_dependency 'rails_bootstrap_navbar'
 
   # Breadcrumbs
