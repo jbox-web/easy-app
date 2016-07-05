@@ -117,10 +117,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'nokogiri'
   s.add_dependency 'premailer-rails'
 
-  # Browsers compat
-  s.add_dependency 'html5shiv-js-rails'
-  s.add_dependency 'respond-js-rails'
-
   # DateValidator
   s.add_dependency 'date_validator'
 
