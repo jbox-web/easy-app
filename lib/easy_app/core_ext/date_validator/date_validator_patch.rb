@@ -6,10 +6,7 @@ module EasyAPP
       module DateValidatorPatch
 
         def self.included(base)
-          base.send(:include, InstanceMethods)
-          base.class_eval do
-            alias_method_chain :validate_each, :easy_app
-          end
+          base.send(:prepend, InstanceMethods)
         end
 
 
@@ -17,9 +14,9 @@ module EasyAPP
 
           # Patch DateValidator to work with *permanent_records* gem
           #
-          def validate_each_with_easy_app(record, attr_name, value)
+          def validate_each(record, attr_name, value)
             return if record.deleted?
-            validate_each_without_easy_app(record, attr_name, value)
+            super
           end
 
         end
