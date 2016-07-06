@@ -79,7 +79,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails_bootstrap_navbar'
 
   # Breadcrumbs
-  s.add_dependency 'crummy'
+  s.add_dependency 'breadcrumble'
 
   # Profiler
   s.add_dependency 'rack-mini-profiler'

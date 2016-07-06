@@ -23,16 +23,6 @@ module EasyAPP
     config.after_initialize do
       Haml::Template.options[:attr_wrapper] = '"'
 
-      Crummy.configure do |config|
-        if config.respond_to?(:ul_class)
-          config.ul_class = 'breadcrumb'
-        else
-          config.ol_class = 'breadcrumb'
-        end
-        config.format            = :html_list
-        config.last_crumb_linked = false
-      end
-
       SimpleNavigation::Configuration.run do |navigation|
         navigation.auto_highlight       = true
         navigation.highlight_on_subpath = true
