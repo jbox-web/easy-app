@@ -7,9 +7,6 @@ module EasyAPP
 
         def self.included(base)
           base.send(:prepend, InstanceMethods)
-          base.class_eval do
-            alias_method_chain :country_select, :bootstrap
-          end
         end
 
 
@@ -105,9 +102,9 @@ module EasyAPP
           end
 
 
-          def country_select_with_bootstrap(name, options = {}, html_options = {})
+          def country_select(name, options = {}, html_options = {})
             form_group_builder(name, options, html_options) do
-              content_tag(:div, send(:country_select_without_bootstrap, name, options, html_options), class: control_specific_class('country_select'))
+              content_tag(:div, super, class: control_specific_class('country_select'))
             end
           end
 
