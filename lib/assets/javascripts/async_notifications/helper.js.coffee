@@ -13,6 +13,8 @@ root.subscribeDanthesChannel = (name) ->
       displayGrowlMessage(data)
     else if data.event_type == 'view_refresh'
       triggerViewRefresh(data)
+    else if data.event_type == 'progress_bar'
+      updateProgressBar(data)
 
 
 displayGrowlMessage = (data) ->
@@ -55,3 +57,11 @@ triggerViewRefresh = (data) ->
 
 refreshView = (url) ->
   $.ajax({ url: url, dataType: 'script' })
+
+
+updateProgressBar = (data) ->
+  progressBar = $('#' + data.target)
+  if progressBar.length > 0
+    progressBar.parent().removeClass('hide')
+    progressBar.width(data.progress + '%')
+    progressBar.html(data.progress + '%')
