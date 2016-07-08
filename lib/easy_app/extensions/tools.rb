@@ -11,9 +11,19 @@ module EasyAPP
 
 
       def set_mini_profiler
-        if current_user && current_user.admin?
+        if mini_profiler_enabled? && mini_profiler_authorized?
           Rack::MiniProfiler.authorize_request
         end
+      end
+
+
+      def mini_profiler_enabled?
+        true
+      end
+
+
+      def mini_profiler_authorized?
+        current_user && current_user.admin?
       end
 
     end
