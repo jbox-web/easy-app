@@ -201,6 +201,9 @@ Gem::Specification.new do |s|
   # Pretty print Rails console
   s.add_dependency 'awesome_print'
 
+  # Foreman (so we can export systemd config files)
+  s.add_dependency 'foreman'
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
