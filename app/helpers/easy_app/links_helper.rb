@@ -161,7 +161,7 @@ module EasyAPP
 
 
     def modal_options
-      { data: { draggable: true }, onclick: 'openModalBox(event, this);' }
+      { data: { draggable: true }, class: 'modal-box' }
     end
 
   end

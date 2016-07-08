@@ -1,17 +1,17 @@
 root = exports ? this
 
-root.openModalBox = (event, element) ->
+# Autoload modal boxes
+$(document).on 'click', '.modal-box', ->
   event.preventDefault()
-  draggable = $(element).data('draggable')
-  size      = $(element).data('modal-size')
-  $.get $(element).attr('href'), (data) ->
+  draggable = $(this).data('draggable')
+  size      = $(this).data('modal-size')
+  $.get $(this).attr('href'), (data) ->
     if draggable
       $('#modal-holder').html(data).find('.modal').modal().draggable()
     else
       $('#modal-holder').html(data).find('.modal').modal()
     if size
       $('.modal-dialog').addClass('modal-' + size)
-  return false
 
 
 root.createBootstrapSwitch = (element) ->
