@@ -1,7 +1,7 @@
 root = exports ? this
 
 # Autoload modal boxes
-$(document).on 'click', '.modal-box', ->
+$(document).on 'click', '.modal-box', (event) ->
   event.preventDefault()
   draggable = $(this).data('draggable')
   size      = $(this).data('modal-size')
