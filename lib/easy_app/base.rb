@@ -2,7 +2,6 @@ require 'easy_app/extensions/errors'
 require 'easy_app/extensions/helpers'
 require 'easy_app/extensions/menus'
 require 'easy_app/extensions/modals'
-require 'easy_app/extensions/security'
 require 'easy_app/extensions/tools'
 
 module EasyAPP
@@ -14,7 +13,6 @@ module EasyAPP
       send(:include, EasyAPP::Extensions::Helpers)
       send(:include, EasyAPP::Extensions::Menus)
       send(:include, EasyAPP::Extensions::Modals)
-      send(:include, EasyAPP::Extensions::Security)
       send(:include, EasyAPP::Extensions::Tools)
     end
 
