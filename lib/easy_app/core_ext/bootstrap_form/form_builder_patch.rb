@@ -87,10 +87,10 @@ module EasyAPP
 
 
           def switch(method, options = {}, html_options = {})
-            form_group_options = options.reverse_merge(wrapper: { class: 'shifted' })
+            form_group_options = html_options.reverse_merge(wrapper: { class: 'shifted' })
             check_box_options  = options.reverse_merge(class: 'bootstrap-switch', label: '')
 
-            form_group_builder(method, form_group_options, html_options) do
+            form_group_builder(method, options, form_group_options) do
               check_box(method, check_box_options) + @template.javascript_tag("createBootstrapSwitch('##{id_for(method, options)}');")
             end
           end
