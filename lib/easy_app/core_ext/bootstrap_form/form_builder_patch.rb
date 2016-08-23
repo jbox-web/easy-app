@@ -86,9 +86,12 @@ module EasyAPP
           end
 
 
-          def switch(method, opts = {})
-            form_group_builder(method, wrapper: { class: 'shifted' }) do
-              check_box(method, opts.merge(class: 'bootstrap-switch', label: '')) + @template.javascript_tag("createBootstrapSwitch('##{id_for(method, opts)}');")
+          def switch(method, options = {}, html_options = {}, checked_value = '1', unchecked_value = '0')
+            form_group_options = html_options.reverse_merge(wrapper: { class: 'shifted' })
+            check_box_options  = options.reverse_merge(class: 'bootstrap-switch', label: '')
+
+            form_group_builder(method, options, form_group_options) do
+              check_box(method, check_box_options, checked_value, unchecked_value) + @template.javascript_tag("createBootstrapSwitch('##{id_for(method, options)}');")
             end
           end
 
