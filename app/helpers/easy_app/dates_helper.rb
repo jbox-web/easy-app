@@ -2,7 +2,8 @@ module EasyAPP
   module DatesHelper
 
     def ll(date, opts = {})
-      date.blank? ? '' : l(date, opts)
+      default = opts.delete(:default) { '' }
+      date.blank? ? default : l(date, opts)
     end
 
   end
