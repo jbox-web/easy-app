@@ -169,6 +169,7 @@ handleSelectAll = (element, table) ->
 contextMenuShow = (event) ->
   mouse_x       = event.pageX
   mouse_y       = event.pageY
+  mouse_y_c     = event.clientY
   render_x      = mouse_x
   render_y      = mouse_y
   dims          = null
@@ -191,7 +192,7 @@ contextMenuShow = (event) ->
       menu_width = $('#context-menu').width()
       menu_height = $('#context-menu').height()
       max_width = mouse_x + 2 * menu_width
-      max_height = mouse_y + menu_height
+      max_height = mouse_y_c + menu_height
 
       ws = window_size()
       window_width = ws.width
@@ -207,7 +208,13 @@ contextMenuShow = (event) ->
       if max_height > window_height
         render_y -= menu_height
         $('#context-menu').addClass('reverse-y')
+        # adding class for submenu
+        if mouse_y_c < 325
+          $('#context-menu .folder').addClass('down')
       else
+        # adding class for submenu
+        if window_height - mouse_y_c < 345
+          $('#context-menu .folder').addClass('up')
         $('#context-menu').removeClass('reverse-y')
 
       render_x = 1 if render_x <= 0
