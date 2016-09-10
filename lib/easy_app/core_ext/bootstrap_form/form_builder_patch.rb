@@ -105,8 +105,8 @@ module EasyAPP
           end
 
 
-          def country_select(name, options = {}, html_options = {})
-            form_group_builder(name, options, html_options) do
+          def country_select(method, options = {}, html_options = {})
+            form_group_builder(method, options, html_options) do
               content_tag(:div, super, class: control_specific_class('country_select'))
             end
           end
