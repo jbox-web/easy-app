@@ -112,7 +112,45 @@ module EasyAPP
           end
 
 
+          def file_field(name, options = {})
+            form_group_builder(name, options.reverse_merge(control_class: nil)) do
+              file_field_wrapper do
+                file_field_header +
+                file_field_body(file_field_without_bootstrap(name, options)) +
+                file_field_footer
+              end
+            end
+          end
+
+
           private
+
+
+            def file_field_wrapper(&block)
+              content_tag(:div, class: 'fileinput fileinput-new input-group', data: { provides: 'fileinput' }, &block)
+            end
+
+
+            def file_field_header
+              content_tag(:div, class: 'form-control', data: { trigger: 'fileinput' }) do
+                content_tag(:i, '', class: 'fa fa-file fa-align') +
+                content_tag(:span, '', class: 'fileinput-filename')
+              end
+            end
+
+
+            def file_field_body(content)
+              content_tag(:span, class: 'input-group-addon btn btn-default btn-file') do
+                content_tag(:span, I18n.t('button.browse'), class: 'fileinput-new') +
+                content_tag(:span, I18n.t('button.change'), class: 'fileinput-exists') +
+                content
+              end
+            end
+
+
+            def file_field_footer
+              @template.link_to I18n.t('button.cancel'), '#', class: 'input-group-addon btn btn-default fileinput-exists', data: { dismiss: 'fileinput' }
+            end
 
 
             def id_for(method, opts = {})
