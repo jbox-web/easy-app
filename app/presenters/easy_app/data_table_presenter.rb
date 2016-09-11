@@ -16,7 +16,12 @@ module EasyAPP
 
 
     def head(label, opts = {})
-      @columns << EasyAPP::DataColumn.new(@view, label, opts)
+      head_for(nil, opts.merge(label: label))
+    end
+
+
+    def head_for(column, opts = {})
+      @columns << EasyAPP::DataColumn.new(@view, column, opts)
     end
 
 
@@ -137,7 +142,7 @@ module EasyAPP
       def datatable_columns
         data = []
         @columns.each_with_index do |c, i|
-          data << c.to_hash.merge(data: i)
+          data << { data: i }.merge(c.to_hash)
         end
         data
       end

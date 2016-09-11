@@ -1,20 +1,25 @@
 module EasyAPP
   class DataColumn
 
-    def initialize(view, label, opts = {})
-      @view  = view
-      @label = label
-      @opts  = opts
+    def initialize(view, name, opts = {})
+      @view = view
+      @name = name
+      @opts = opts
     end
 
 
     def to_s
-      @view.content_tag(:th, @label, class: css_class)
+      @view.content_tag(:th, label, class: css_class)
     end
 
 
     def to_hash
-      { className: css_class, visible: visible?, orderable: sortable?, searchable: searchable?, width: width }
+      { className: css_class, visible: visible?, orderable: sortable?, searchable: searchable?, width: width, data: @name }
+    end
+
+
+    def label
+      @opts.fetch(:label, '')
     end
 
 
@@ -34,7 +39,7 @@ module EasyAPP
 
 
     def css_class
-      @opts.fetch(:class, '')
+      @opts.fetch(:class, @name)
     end
 
 
