@@ -34,8 +34,8 @@ Gem::Specification.new do |s|
 
   # Sessions and Cache
   s.add_dependency 'activerecord-session_store'
-  s.add_dependency 'redis-rails', '~> 4.0.0'
-  s.add_dependency 'redis-rack-cache'
+  s.add_dependency 'redis-rails'
+  s.add_dependency 'redis-rack-cache', '~> 2.0.0.pre'
 
   # Configuration
   s.add_dependency 'settingslogic'
