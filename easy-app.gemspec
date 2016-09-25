@@ -53,7 +53,6 @@ Gem::Specification.new do |s|
 
   # Fonts
   s.add_dependency 'font-awesome-rails'
-  s.add_dependency 'google-webfonts-rails'
 
   # CSS
   s.add_dependency 'sass-rails'
