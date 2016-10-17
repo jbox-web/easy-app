@@ -13,9 +13,6 @@ Gem::Specification.new do |s|
   s.description = %q{This gem is designed to provide helpers to ease creation of Rails Applications}
   s.license     = 'MIT'
 
-  # Rails
-  s.add_dependency 'rails', '~> 4.2', '>= 4.2.5'
-
   # Server
   s.add_dependency 'puma'
 
