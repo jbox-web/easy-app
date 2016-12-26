@@ -38,6 +38,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'settingslogic'
 
   # Javascript
+  s.add_dependency 'therubyracer'
   s.add_dependency 'coffee-rails'
   s.add_dependency 'jquery-rails'
   s.add_dependency 'jquery-ui-rails'
