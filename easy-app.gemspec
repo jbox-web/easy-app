@@ -78,9 +78,6 @@ Gem::Specification.new do |s|
   # Breadcrumbs
   s.add_dependency 'breadcrumble'
 
-  # Profiler
-  s.add_dependency 'rack-mini-profiler'
-
   # Themes
   s.add_dependency 'themes_on_rails'
 

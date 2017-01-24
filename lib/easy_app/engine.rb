@@ -29,8 +29,6 @@ module EasyAPP
       end
 
       Chartkick.options[:content_for] = :charts_js
-
-      Rack::MiniProfiler.config.start_hidden = true if defined?(Rack::MiniProfiler)
     end
   end
 end
