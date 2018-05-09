@@ -1,7 +1,5 @@
 ## EasyAPP
 
-[![Dependency Status](https://gemnasium.com/jbox-web/easy-app.svg)](https://gemnasium.com/jbox-web/easy-app)
-
 ### A Ruby gem to create Rails Applications, easy ;)
 
 ## Installation
